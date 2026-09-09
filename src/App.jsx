@@ -4,6 +4,10 @@ import Login from "./components/frontend/Login"
 import Otp from "./components/frontend/Otp"
 import { Language } from "./components/frontend/Language"
 import Consent from "./components/frontend/Consent"
+import Steps from "./components/frontend/Steps"
+import Mode from "./components/frontend/Mode"
+import { Ayush } from "./components/ayushman/Ayush"
+import General from "./components/general/General"
 
 function App() {
 
@@ -15,6 +19,10 @@ function App() {
       <Route path="/Otp" element={<Otp/>}/>
       <Route path="/language" element={<Language/>}/>
       <Route path="/consent" element={<Consent/>} />
+      <Route path="/steps" element={<Steps/>} />
+      <Route path="/mode" element={<Mode/>} />
+      <Route path="/ayush" element={<Ayush/>}/>
+      <Route path="/general" element={<General/>} />
     </Routes>
     
     </BrowserRouter>

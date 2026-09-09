@@ -16,7 +16,7 @@ export const Language = () => {
 
   function selectLanguage(){
     if(language){
-        navigate("/consent")
+        navigate("/steps")
     }
   }
 
