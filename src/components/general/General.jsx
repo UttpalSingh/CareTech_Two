@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { MdOutlineMicNone } from "react-icons/md";
 import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 
 const General = () => {
+    const navigate = useNavigate()
+
   const questions = [
     {
       letter: "S",
@@ -80,7 +83,7 @@ const General = () => {
     setStoreValue((prev) => [...prev, newAns]);
 
     if (currentQuestion === questions.length - 1) {
-      console.log("questions completed");
+      navigate("/haverepo")
       return;
     }
     setCurrentQuestion((prev) => prev + 1);

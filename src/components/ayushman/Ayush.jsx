@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { MdOutlineMicNone } from "react-icons/md";
 import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 
 const Ayush = () => {
+    const navigate = useNavigate()
+
   const questions = [
     {
       id: 1,
@@ -100,8 +103,7 @@ const Ayush = () => {
     setStoreValue(updatedAnswers);
 
     if (isLastQuestion) {
-      console.log("AYUSH questions completed");
-      console.log("Final Answers:", updatedAnswers);
+      navigate("/haverepo")
       return;
     }
 
@@ -251,10 +253,10 @@ const Ayush = () => {
                 type="button"
                 onClick={handleNext}
                 disabled={!answer.trim()}
-                className={`flex items-center gap-3 rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 ${
+                className={`flex items-center gap-3 rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-[#005f73] hover:shadow-lg ${
                   answer.trim()
                     ? "bg-[#0a9396] hover:bg-[#005f73] hover:shadow-lg"
-                    : "cursor-not-allowed bg-gray-300"
+                    : "cursor-not-allowed bg-[#0a9396]"
                 }`}
               >
                 {isLastQuestion ? "Complete" : "Next Question"}

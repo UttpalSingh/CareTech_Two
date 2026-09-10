@@ -43,7 +43,7 @@ const Main = () => {
           <div className="w-full md:w-1/2 md:pl-8">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#0a9396]/10 bg-[#0a9396]/10 px-4 py-2 text-sm font-medium text-[#087f82]">
               <span className="h-2 w-2 rounded-full bg-[#0a9396]" />
-              Your Health, Simplified
+              Your Health, Our Care
             </span>
 
             <h1 className="font-['Valley_Sans'] text-5xl font-semibold leading-[1.05] tracking-tight text-[#073b4c] sm:text-6xl md:text-7xl">
