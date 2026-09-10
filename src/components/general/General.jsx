@@ -52,6 +52,13 @@ const General = () => {
       question:
         "How bad is the pain on a scale from 0 to 10, where 0 is no pain and 10 is the worst pain imaginable?",
     },
+    {
+      id: 11,
+      letter: "C",
+      title: "Chief Complaint",
+      question:
+        "What is the main problem or exact health concern that you want to discuss with your practitioner?",
+    },
   ];
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -62,30 +69,29 @@ const General = () => {
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
   const handleNext = () => {
-    if(!answer.trim()){
-        return
-    }   
-    const newAns = {
-        question:questions[currentQuestion].question,
-        answer:answer
+    if (!answer.trim()) {
+      return;
     }
+    const newAns = {
+      question: questions[currentQuestion].question,
+      answer: answer,
+    };
     //understand this part
-    setStoreValue((prev) => [...prev,newAns])
+    setStoreValue((prev) => [...prev, newAns]);
 
     if (currentQuestion === questions.length - 1) {
       console.log("questions completed");
-      return
+      return;
     }
     setCurrentQuestion((prev) => prev + 1);
     setAnswer("");
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(storeValue);
 
     // add value in local storage
-    
-  },[storeValue])
+  }, [storeValue]);
 
   const handlePrevious = () => {
     if (currentQuestion > 0) {
@@ -226,25 +232,31 @@ const General = () => {
         </div>
 
         {/* Question Indicators */}
-        <div className="mt-7 flex justify-center gap-2">
+        <div className="mt-7 flex items-center justify-center gap-2">
           {questions.map((item, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => {
-                setCurrentQuestion(index);
-                setAnswer("");
-              }}
-              className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-all duration-300 ${
-                index === currentQuestion
-                  ? "scale-110 bg-[#0a9396] text-white shadow-md"
-                  : index < currentQuestion
-                    ? "bg-[#ccebea] text-[#005f73]"
-                    : "bg-gray-200 text-gray-500 hover:bg-gray-300"
-              }`}
-            >
-              {item.letter}
-            </button>
+            <React.Fragment key={index}>
+              {/* Comma before Chief Complaint */}
+              {index === questions.length - 1 && (
+                <span className="text-xl font-bold text-[#005f73]">-</span>
+              )}
+
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentQuestion(index);
+                  setAnswer("");
+                }}
+                className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-all duration-300 ${
+                  index === currentQuestion
+                    ? "scale-110 bg-[#0a9396] text-white shadow-md"
+                    : index < currentQuestion
+                      ? "bg-[#ccebea] text-[#005f73]"
+                      : "bg-gray-200 text-gray-500 hover:bg-gray-300"
+                }`}
+              >
+                {item.letter}
+              </button>
+            </React.Fragment>
           ))}
         </div>
 

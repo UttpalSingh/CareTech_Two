@@ -8,6 +8,7 @@ import Steps from "./components/frontend/Steps"
 import Mode from "./components/frontend/Mode"
 import Ayush from "./components/ayushman/Ayush"
 import General from "./components/general/General"
+import  HaveRep  from "./components/reports/HaveRep"
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
       <Route path="/mode" element={<Mode/>} />
       <Route path="/ayush" element={<Ayush/>}/>
       <Route path="/general" element={<General/>} />
+      <Route path="/haverepo" element={<HaveRep/>} />
     </Routes>
     
     </BrowserRouter>

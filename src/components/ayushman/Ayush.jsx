@@ -67,7 +67,14 @@ const Ayush = () => {
       letter: "A",
       title: "Additional Information",
       question:
-        "Is there anything else about your health, lifestyle, or symptoms that you think your AYUSH practitioner should know?",
+        "Is there anything else about your health, lifestyle, or symptoms that you think your practitioner should know?",
+    },
+    {
+      id: 11,
+      letter: "C",
+      title: "Chief Complaint",
+      question:
+        "What is the main problem or exact health concern that you want to discuss with your practitioner?",
     },
   ];
 
@@ -103,6 +110,7 @@ const Ayush = () => {
   };
   useEffect(() => {
     console.log(storeValue);
+    // store data in local storage
   }, [storeValue]);
 
   const handlePrevious = () => {
@@ -209,7 +217,6 @@ const Ayush = () => {
                   className="h-12 flex-1 bg-transparent px-4 text-gray-700 outline-none placeholder:text-gray-400"
                 />
 
-
                 <button
                   type="button"
                   className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#e0f4f4] text-[#005f73] transition-all duration-300 hover:bg-[#0a9396] hover:text-white"
@@ -258,23 +265,32 @@ const Ayush = () => {
         </div>
 
         {/* ---------------- Question Indicators ---------------- */}
-        <div className="mt-7 flex flex-wrap justify-center gap-2">
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
           {questions.map((item, index) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => handleSelectQuestion(index)}
-              title={item.title}
-              className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-all duration-300 ${
-                index === currentQuestion
-                  ? "scale-110 bg-[#0a9396] text-white shadow-md"
-                  : index < currentQuestion
-                    ? "bg-[#ccebea] text-[#005f73]"
-                    : "bg-gray-200 text-gray-500 hover:bg-gray-300"
-              }`}
-            >
-              {item.letter}
-            </button>
+            <React.Fragment key={item.id}>
+              {/* Comma before Chief Complaint */}
+              {index === questions.length - 1 && (
+                <span className="text-xl font-bold text-[#005f73]">-</span>
+              )}
+
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentQuestion(index);
+                  setAnswer("");
+                }}
+                title={item.title}
+                className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-all duration-300 ${
+                  index === currentQuestion
+                    ? "scale-110 bg-[#0a9396] text-white shadow-md"
+                    : index < currentQuestion
+                      ? "bg-[#ccebea] text-[#005f73]"
+                      : "bg-gray-200 text-gray-500 hover:bg-gray-300"
+                }`}
+              >
+                {item.letter}
+              </button>
+            </React.Fragment>
           ))}
         </div>
 
