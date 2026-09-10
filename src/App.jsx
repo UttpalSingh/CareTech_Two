@@ -6,7 +6,7 @@ import { Language } from "./components/frontend/Language"
 import Consent from "./components/frontend/Consent"
 import Steps from "./components/frontend/Steps"
 import Mode from "./components/frontend/Mode"
-import { Ayush } from "./components/ayushman/Ayush"
+import Ayush from "./components/ayushman/Ayush"
 import General from "./components/general/General"
 
 function App() {
