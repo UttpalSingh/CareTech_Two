@@ -32,7 +32,7 @@ const Main = () => {
                     muted
                     loop
                     playsInline
-                    src="./public/videos/CareTech.mp4"
+                    src="/videos/CareTech.mp4"
                   ></video>
                 </div>
               </div>
