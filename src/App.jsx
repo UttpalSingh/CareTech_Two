@@ -10,6 +10,8 @@ import Ayush from "./components/ayushman/Ayush";
 import General from "./components/general/General";
 import { Haverepo } from "./components/frontend/Haverepo";
 import  {Summary}  from "./components/summary/Summary";
+import Concerns from "./components/concerns/Concerns";
+import Final from "./components/final/Final";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path="/general" element={<General/>} />
         <Route path="/haverepo" element={<Haverepo/>} />
         <Route path="/summary" element={<Summary/>}/>
+        <Route path="/concerns" element={<Concerns/>}/>
+        <Route path="/final" element={<Final/>}/>
       </Routes>
     </BrowserRouter>
   );

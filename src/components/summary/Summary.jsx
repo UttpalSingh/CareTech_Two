@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FiEdit3, FiUploadCloud } from "react-icons/fi";
 
 export const Summary = () => {
+    const navigate = useNavigate()
+
+    function nextPage(){
+        navigate("/concerns")
+    }
+
   return (
     <div className="min-h-screen w-full bg-[#f0fafa]">
 
@@ -66,6 +73,7 @@ export const Summary = () => {
 
           {/* Upload Button */}
           <button
+            onClick={nextPage}
             type="button"
             className="flex items-center gap-2 rounded-xl bg-[#005f73] px-7 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0a7288] hover:shadow-lg"
           >
