@@ -4,63 +4,71 @@ import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 
 const General = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const questions = [
     {
+      id: 1,
+      letter: "C",
+      title: "Chief Complaint",
+      question:
+        "What is the main problem or exact health concern that you want to discuss with your practitioner?",
+    },
+    {
+      id: 2,
       letter: "S",
       title: "Site",
       question:
         "Where is the pain located on your body? Can you point to it with one finger?",
     },
     {
+      id: 3,
       letter: "O",
       title: "Onset",
       question:
         "When did the pain start? Did it begin suddenly or come on slowly?",
     },
     {
+      id: 4,
       letter: "C",
       title: "Character",
       question:
         "What does the pain feel like? Is it sharp, dull, burning, or aching?",
     },
     {
+      id: 5,
       letter: "R",
       title: "Radiation",
       question:
         "Does the pain travel or spread to any other part of your body?",
     },
     {
+      id: 6,
       letter: "A",
       title: "Associated Symptoms",
       question:
         "Are there other signs happening at the same time, like nausea, sweating, or dizziness?",
     },
     {
+      id: 7,
       letter: "T",
       title: "Timing",
       question:
         "Does the pain stay constant, or does it come and go? How long do the episodes last?",
     },
     {
+      id: 8,
       letter: "E",
       title: "Exacerbating & Relieving Factors",
       question:
         "Does anything make the pain better or worse, such as rest, food, or medicine?",
     },
     {
+      id: 9,
       letter: "S",
       title: "Severity",
       question:
         "How bad is the pain on a scale from 0 to 10, where 0 is no pain and 10 is the worst pain imaginable?",
-    },
-    {
-      id: 11,
-      letter: "C",
-      title: "Chief Complaint",
-      question:
-        "What is the main problem or exact health concern that you want to discuss with your practitioner?",
     },
   ];
 
@@ -83,7 +91,7 @@ const General = () => {
     setStoreValue((prev) => [...prev, newAns]);
 
     if (currentQuestion === questions.length - 1) {
-      navigate("/haverepo")
+      navigate("/haverepo");
       return;
     }
     setCurrentQuestion((prev) => prev + 1);
@@ -238,11 +246,6 @@ const General = () => {
         <div className="mt-7 flex items-center justify-center gap-2">
           {questions.map((item, index) => (
             <React.Fragment key={index}>
-              {/* Comma before Chief Complaint */}
-              {index === questions.length - 1 && (
-                <span className="text-xl font-bold text-[#005f73]">-</span>
-              )}
-
               <button
                 type="button"
                 onClick={() => {
@@ -259,6 +262,11 @@ const General = () => {
               >
                 {item.letter}
               </button>
+
+              {/* Dash after Chief Complaint */}
+              {item.title === "Chief Complaint" && (
+                <span className="text-xl font-bold text-[#005f73]">-</span>
+              )}
             </React.Fragment>
           ))}
         </div>
