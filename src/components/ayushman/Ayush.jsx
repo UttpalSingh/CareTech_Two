@@ -4,80 +4,80 @@ import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 
 const Ayush = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const questions = [
     {
       id: 1,
+      letter: "C",
+      title: "Chief Complaint",
+      question:
+        "What is the main problem or exact health concern that you want to discuss with your practitioner?",
+    },
+    {
+      id: 2,
       letter: "H",
       title: "Health Concern",
       question:
         "What health problem or symptoms are you currently experiencing?",
     },
     {
-      id: 2,
+      id: 3,
       letter: "L",
       title: "Lifestyle",
       question: "How would you describe your daily lifestyle and routine?",
     },
     {
-      id: 3,
+      id: 4,
       letter: "D",
       title: "Diet",
       question: "What does your usual diet look like?",
     },
     {
-      id: 4,
+      id: 5,
       letter: "S",
       title: "Sleep",
       question: "How well do you sleep?",
     },
     {
-      id: 5,
+      id: 6,
       letter: "G",
       title: "Digestion",
       question: "How are your digestion and bowel habits?",
     },
     {
-      id: 6,
+      id: 7,
       letter: "M",
       title: "Mental Wellbeing",
       question: "How are you feeling emotionally and mentally these days?",
     },
     {
-      id: 7,
+      id: 8,
       letter: "T",
       title: "Treatments",
       question:
         "What medicines, supplements, herbal remedies, or AYUSH treatments are you currently taking?",
     },
     {
-      id: 8,
+      id: 9,
       letter: "P",
       title: "Previous Treatment",
       question:
         "Have you previously received any treatment from Ayurveda, Yoga & Naturopathy, Unani, Siddha, or Homoeopathy?",
     },
     {
-      id: 9,
+      id: 10,
       letter: "H",
       title: "Health History",
       question:
         "Do you have any known allergies, previous illnesses, surgeries, or long-term health conditions?",
     },
     {
-      id: 10,
+      id: 11,
       letter: "A",
       title: "Additional Information",
       question:
         "Is there anything else about your health, lifestyle, or symptoms that you think your practitioner should know?",
-    },
-    {
-      id: 11,
-      letter: "C",
-      title: "Chief Complaint",
-      question:
-        "What is the main problem or exact health concern that you want to discuss with your practitioner?",
     },
   ];
 
@@ -103,7 +103,7 @@ const Ayush = () => {
     setStoreValue(updatedAnswers);
 
     if (isLastQuestion) {
-      navigate("/haverepo")
+      navigate("/haverepo");
       return;
     }
 
@@ -270,11 +270,6 @@ const Ayush = () => {
         <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
           {questions.map((item, index) => (
             <React.Fragment key={item.id}>
-              {/* Comma before Chief Complaint */}
-              {index === questions.length - 1 && (
-                <span className="text-xl font-bold text-[#005f73]">-</span>
-              )}
-
               <button
                 type="button"
                 onClick={() => {
@@ -292,10 +287,14 @@ const Ayush = () => {
               >
                 {item.letter}
               </button>
+
+              {/* Dash after Chief Complaint */}
+              {item.title === "Chief Complaint" && (
+                <span className="text-xl font-bold text-[#005f73]">-</span>
+              )}
             </React.Fragment>
           ))}
         </div>
-
         {/* ---------------- Privacy Message ---------------- */}
         <p className="mt-6 text-center text-xs text-gray-400">
           Your answers are used to create your structured AYUSH health history.
