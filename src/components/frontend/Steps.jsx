@@ -7,6 +7,10 @@ const Steps = () => {
 
   const steps = [
     {
+      title: "Choose Your Domain",
+      image: "/images/domain.png",
+    },
+    {
       title: "Choose Your Mode",
       image: "/images/mode.png",
     },
@@ -21,10 +25,6 @@ const Steps = () => {
     {
       title: "Check or Edit Your Report",
       image: "/images/edit.png",
-    },
-    {
-      title: "Read Privacy And Policy",
-      image: "/images/concerns.png",
     },
     {
       title: "Send Your Report",
