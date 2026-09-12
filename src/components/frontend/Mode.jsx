@@ -3,15 +3,14 @@ import { FaLeaf, FaStethoscope, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Mode = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    function ayushPage(){
-        navigate("/ayush")
-    }
-    function generalPage(){
-        navigate("/general")
-    }
-
+  function ayushPage() {
+    navigate("/ayush");
+  }
+  function generalPage() {
+    navigate("/general");
+  }
 
   return (
     <div className="min-h-screen w-full  from-[#f0fbfb] via-white to-[#e8f6f7] px-6 py-12">
@@ -28,8 +27,8 @@ const Mode = () => {
           </h1>
 
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-gray-500 md:text-lg">
-            Select the mode that best matches your healthcare needs.
-            CareTech will guide you through the process.
+            Select the mode that best matches your healthcare needs. CareTech
+            will guide you through the process.
           </p>
         </div>
 
@@ -37,9 +36,6 @@ const Mode = () => {
         <div className="grid w-full max-w-4xl gap-6 md:grid-cols-2">
           {/* Ayush Mode */}
           <div className="group relative overflow-hidden rounded-3xl border border-[#bfe5e6] bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-            {/* Decorative Circle */}
-            <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#e4f7f4] transition-transform duration-500 group-hover:scale-150"></div>
-
             <div className="relative">
               {/* Icon */}
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#0a9396] text-3xl text-white shadow-lg">
@@ -58,8 +54,8 @@ const Mode = () => {
 
               {/* Description */}
               <p className="mt-3 min-h-[7.2vh] leading-6 text-gray-500">
-                Record and organize your health information with an
-                approach focused on traditional Indian systems of medicine.
+                Record and organize your health information with an approach
+                focused on traditional Indian systems of medicine.
               </p>
 
               {/* Button */}
@@ -77,9 +73,6 @@ const Mode = () => {
 
           {/* General Mode */}
           <div className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-[#0a9396]/30 hover:shadow-2xl">
-            {/* Decorative Circle */}
-            <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#e9f7f7] transition-transform duration-500 group-hover:scale-150"></div>
-
             <div className="relative">
               {/* Icon */}
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#005f73] text-3xl text-white shadow-lg">
@@ -98,8 +91,8 @@ const Mode = () => {
 
               {/* Description */}
               <p className="mt-3 min-h-[7.2vh] leading-6 text-gray-500">
-                Create a structured medical history and organize your
-                healthcare information for general clinical use.
+                Create a structured medical history and organize your healthcare
+                information for general clinical use.
               </p>
 
               {/* Button */}
@@ -114,12 +107,6 @@ const Mode = () => {
               </button>
             </div>
           </div>
-        </div>
-
-        {/* Bottom Information */}
-        <div className="mt-10 flex items-center gap-2 text-sm text-gray-400">
-          <span className="h-2 w-2 rounded-full bg-[#0a9396]"></span>
-          You can change your mode later
         </div>
       </div>
     </div>

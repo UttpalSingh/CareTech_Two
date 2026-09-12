@@ -116,8 +116,8 @@ const General = () => {
       <div className="mx-auto flex min-h-[90vh] max-w-4xl flex-col justify-center">
         {/* Header */}
         <div className="mb-8 text-center">
-          <span className="text-sm font-semibold uppercase tracking-[0.25em] text-[#0a9396]">
-            CareTech
+          <span className="text-xl font-semibold uppercase tracking-[0.25em] text-[#0a9396]">
+            CareTech +
           </span>
 
           <h1 className="mt-3 text-3xl font-bold text-gray-800 md:text-4xl">
@@ -141,8 +141,6 @@ const General = () => {
               {Math.round(progress)}%
             </span>
           </div>
-
-          {/* Progress Bar */}
           <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
             <div
               className="h-full rounded-full bg-[#0a9396] transition-all duration-500"
@@ -153,9 +151,6 @@ const General = () => {
 
         {/* Question Card */}
         <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-7 shadow-xl md:p-10">
-          {/* Decorative Circle */}
-          <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-[#e8f7f7]"></div>
-
           <div className="relative">
             {/* Question Category */}
             <div className="flex items-center gap-4">

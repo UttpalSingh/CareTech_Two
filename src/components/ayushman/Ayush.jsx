@@ -9,75 +9,67 @@ const Ayush = () => {
   const questions = [
     {
       id: 1,
-      letter: "C",
-      title: "Chief Complaint",
-      question:
-        "What is the main problem or exact health concern that you want to discuss with your practitioner?",
+      dosha: "Vata",
+      letter: "Vata",
+      title: "Vata Dosha",
+      question: "How would you describe your body structure and weight?",
     },
     {
       id: 2,
-      letter: "H",
-      title: "Health Concern",
-      question:
-        "What health problem or symptoms are you currently experiencing?",
+      dosha: "Vata",
+      letter: "Vata",
+      title: "Vata Dosha",
+      question: "How would you describe your skin?",
     },
     {
       id: 3,
-      letter: "L",
-      title: "Lifestyle",
-      question: "How would you describe your daily lifestyle and routine?",
+      dosha: "Vata",
+      letter: "Vata",
+      title: "Vata Dosha",
+      question: "How would you describe your sleep pattern?",
     },
     {
       id: 4,
-      letter: "D",
-      title: "Diet",
-      question: "What does your usual diet look like?",
+      dosha: "Pitta",
+      letter: "Pitta",
+      title: "Pitta Dosha",
+      question:
+        "How do you generally feel regarding body temperature and heat?",
     },
     {
       id: 5,
-      letter: "S",
-      title: "Sleep",
-      question: "How well do you sleep?",
+      dosha: "Pitta",
+      letter: "Pitta",
+      title: "Pitta Dosha",
+      question: "How would you describe your hunger and appetite?",
     },
     {
       id: 6,
-      letter: "G",
-      title: "Digestion",
-      question: "How are your digestion and bowel habits?",
+      dosha: "Pitta",
+      letter: "Pitta",
+      title: "Pitta Dosha",
+      question: "How would you describe your digestion?",
     },
     {
       id: 7,
-      letter: "M",
-      title: "Mental Wellbeing",
-      question: "How are you feeling emotionally and mentally these days?",
+      dosha: "Kapha",
+      letter: "Kapha",
+      title: "Kapha Dosha",
+      question: "How would you describe your body and muscle development?",
     },
     {
       id: 8,
-      letter: "T",
-      title: "Treatments",
-      question:
-        "What medicines, supplements, herbal remedies, or AYUSH treatments are you currently taking?",
+      dosha: "Kapha",
+      letter: "Kapha",
+      title: "Kapha Dosha",
+      question: "How would you describe your skin and hair?",
     },
     {
       id: 9,
-      letter: "P",
-      title: "Previous Treatment",
-      question:
-        "Have you previously received any treatment from Ayurveda, Yoga & Naturopathy, Unani, Siddha, or Homoeopathy?",
-    },
-    {
-      id: 10,
-      letter: "H",
-      title: "Health History",
-      question:
-        "Do you have any known allergies, previous illnesses, surgeries, or long-term health conditions?",
-    },
-    {
-      id: 11,
-      letter: "A",
-      title: "Additional Information",
-      question:
-        "Is there anything else about your health, lifestyle, or symptoms that you think your practitioner should know?",
+      dosha: "Kapha",
+      letter: "Kapha",
+      title: "Kapha Dosha",
+      question: "How would you describe your usual activity and movement?",
     },
   ];
 
@@ -110,6 +102,7 @@ const Ayush = () => {
     setCurrentQuestion((prev) => prev + 1);
     setAnswer("");
   };
+
   useEffect(() => {
     console.log(storeValue);
     // store data in local storage
@@ -132,8 +125,8 @@ const Ayush = () => {
       <div className="mx-auto flex min-h-[90vh] max-w-4xl flex-col justify-center">
         {/* ---------------- Header ---------------- */}
         <div className="mb-8 text-center">
-          <span className="text-sm font-semibold uppercase tracking-[0.25em] text-[#0a9396]">
-            CareTech
+          <span className="text-xl font-semibold uppercase tracking-[0.25em] text-[#0a9396]">
+            CareTech+
           </span>
 
           <h1 className="mt-3 text-3xl font-bold text-gray-800 md:text-4xl">
@@ -172,9 +165,6 @@ const Ayush = () => {
         </div>
 
         <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-7 shadow-xl md:p-10">
-          <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-[#e8f7f7]"></div>
-          <div className="absolute -bottom-24 -left-20 h-40 w-40 rounded-full bg-[#f0fbfb]"></div>
-
           <div className="relative">
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#0a9396] text-2xl font-bold text-white shadow-md">
@@ -185,21 +175,15 @@ const Ayush = () => {
                 <p className="text-xs font-semibold uppercase tracking-widest text-[#0a9396]">
                   {question.letter} — {question.title}
                 </p>
-
-                <p className="mt-1 text-sm text-gray-400">
-                  AYUSH Health History
-                </p>
               </div>
             </div>
 
-            {/* Question */}
             <div className="mt-8">
               <h2 className="text-2xl font-bold leading-relaxed text-gray-800 md:text-3xl">
                 {question.question}
               </h2>
             </div>
 
-            {/* Answer Input */}
             <div className="mt-8">
               <label className="mb-2 block text-sm font-semibold text-gray-600">
                 Your Answer
@@ -266,7 +250,7 @@ const Ayush = () => {
           </div>
         </div>
 
-        {/* ---------------- Question Indicators ---------------- */}
+        {/* question */}
         <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
           {questions.map((item, index) => (
             <React.Fragment key={item.id}>
@@ -277,7 +261,7 @@ const Ayush = () => {
                   setAnswer("");
                 }}
                 title={item.title}
-                className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-all duration-300 ${
+                className={`flex h-10 w-10 items-center justify-center rounded-full text-xs font-bold transition-all duration-300 ${
                   index === currentQuestion
                     ? "scale-110 bg-[#0a9396] text-white shadow-md"
                     : index < currentQuestion
@@ -287,18 +271,12 @@ const Ayush = () => {
               >
                 {item.letter}
               </button>
-
-              {/* Dash after Chief Complaint */}
               {item.title === "Chief Complaint" && (
                 <span className="text-xl font-bold text-[#005f73]">-</span>
               )}
             </React.Fragment>
           ))}
         </div>
-        {/* ---------------- Privacy Message ---------------- */}
-        <p className="mt-6 text-center text-xs text-gray-400">
-          Your answers are used to create your structured AYUSH health history.
-        </p>
       </div>
     </div>
   );
