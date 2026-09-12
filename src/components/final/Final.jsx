@@ -16,7 +16,7 @@ const Final = () => {
   }
 
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#eefafa] via-white to-[#e5f5f6] px-5 py-10">
+    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden from-[#eefafa] via-white to-[#e5f5f6] px-5 py-10">
 
       {/* Background Decorations */}
       <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#dff3f3] opacity-70"></div>
@@ -44,7 +44,7 @@ const Final = () => {
 
 
         {/* Success Card */}
-        <div className="rounded-[2rem] border border-[#d8eeee] bg-white px-6 py-10 text-center shadow-[0_25px_70px_rgba(0,95,115,0.12)] md:px-12 md:py-12">
+        <div className="rounded-[3vh] border border-[#d8eeee] bg-white px-6 py-10 text-center shadow-[0_25px_70px_rgba(0,95,115,0.12)] md:px-12 md:py-12">
 
           {/* Success Animation */}
           <div className="relative mx-auto flex h-28 w-28 items-center justify-center">

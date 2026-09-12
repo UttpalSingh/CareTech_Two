@@ -64,7 +64,7 @@ const Concerns = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-[#eefafa] via-white to-[#e5f5f6] px-4 py-8 md:px-8">
+    <div className="min-h-screen w-full from-[#eefafa] via-white to-[#e5f5f6] px-4 py-8 md:px-8">
 
       {/* Header */}
       <div className="mx-auto mb-8 flex w-full max-w-5xl items-center justify-between">
@@ -109,7 +109,7 @@ const Concerns = () => {
 
 
         {/* Main Card */}
-        <div className="overflow-hidden rounded-[2rem] border border-[#d9eeee] bg-white shadow-[0_20px_60px_rgba(0,95,115,0.10)]">
+        <div className="overflow-hidden rounded-[3vh] border border-[#d9eeee] bg-white shadow-[0_20px_60px_rgba(0,95,115,0.10)]">
 
           {/* Information Banner */}
           <div className="flex gap-4 border-b border-[#dceeee] bg-[#f3fbfb] px-6 py-5 md:px-8">

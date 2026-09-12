@@ -43,7 +43,7 @@ export const Summary = () => {
       {/* Main Image Area */}
       <main className="flex min-h-[calc(100vh-145px)] items-center justify-center px-3 py-5 md:px-6">
 
-        <div className="w-full max-w-[1500px] overflow-hidden rounded-2xl border border-[#d7eeee] bg-white shadow-[0_15px_50px_rgba(0,95,115,0.12)]">
+        <div className="w-full max-w-[150vh] overflow-hidden rounded-2xl border border-[#d7eeee] bg-white shadow-[0_15px_50px_rgba(0,95,115,0.12)]">
 
           <img
             src="/images/summary-fhir.png"
@@ -59,7 +59,7 @@ export const Summary = () => {
       {/* Bottom Action Bar */}
       <div className="sticky bottom-0 z-50 border-t border-[#d6eeee] bg-white/95 px-5 py-4 shadow-[0_-10px_30px_rgba(0,95,115,0.08)] backdrop-blur-md">
 
-        <div className="mx-auto flex w-full max-w-[1500px] items-center justify-end gap-3">
+        <div className="mx-auto flex w-full max-w-[150vh] items-center justify-end gap-3">
 
           {/* Edit Button */}
           <button

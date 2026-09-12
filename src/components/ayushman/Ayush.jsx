@@ -128,7 +128,7 @@ const Ayush = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-[#f0fbfb] via-white to-[#e8f6f7] px-5 py-10">
+    <div className="min-h-screen w-full  from-[#f0fbfb] via-white to-[#e8f6f7] px-5 py-10">
       <div className="mx-auto flex min-h-[90vh] max-w-4xl flex-col justify-center">
         {/* ---------------- Header ---------------- */}
         <div className="mb-8 text-center">

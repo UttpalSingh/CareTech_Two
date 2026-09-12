@@ -12,6 +12,7 @@ import { Haverepo } from "./components/frontend/Haverepo";
 import  {Summary}  from "./components/summary/Summary";
 import Concerns from "./components/concerns/Concerns";
 import Final from "./components/final/Final";
+import Select from "./components/selectBranch/Select";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/summary" element={<Summary/>}/>
         <Route path="/concerns" element={<Concerns/>}/>
         <Route path="/final" element={<Final/>}/>
+        <Route path="/selectDomain" element={<Select/>} />
       </Routes>
     </BrowserRouter>
   );

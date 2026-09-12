@@ -5,34 +5,35 @@ import { GrLinkNext } from "react-icons/gr";
 const Steps = () => {
   const navigate = useNavigate();
 
-const steps = [
-  {
-    title: "Choose Your Mode",
-    image: "/images/mode.png",
-  },
-  {
-    title: "Answer the Given Questions",
-    image: "/images/questions.png",
-  },
-  {
-    title: "Upload Your Report",
-    image: "/images/uploadRepo.png",
-  },
-  {
-    title: "Check or Edit Your Report",
-    image: "/images/edit.png",
-  },
-  {
-    title: "Read Privacy And Policy",
-    image: "/images/concerns.png",
-  },
-  {
-    title: "Send Your Report",
-    image: "/images/send.png",
-  },
-];
+  const steps = [
+    {
+      title: "Choose Your Mode",
+      image: "/public/images/mode.png",
+    },
+    {
+      title: "Answer the Given Questions",
+      image: "/public/images/questions.png",
+    },
+    {
+      title: "Upload Your Report",
+      image: "/public/images/uploadRepo.png",
+    },
+    {
+      title: "Check or Edit Your Report",
+      image: "/public/images/edit.png",
+    },
+    {
+      title: "Read Privacy And Policy",
+      image: "/public/images/concerns.png",
+    },
+    {
+      title: "Send Your Report",
+      image: "/public/images/send.png",
+    },
+  ];
+
   function handleMode() {
-    navigate("/mode");
+    navigate("/selectDomain");
   }
 
   return (
