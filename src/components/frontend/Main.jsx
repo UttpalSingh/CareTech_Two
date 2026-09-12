@@ -1,8 +1,9 @@
-import React from "react";
+import React  from "react";
 import { useNavigate } from "react-router-dom";
 
 const Main = () => {
   const navigate = useNavigate()
+
   function handleLogin(){
     navigate("/login")
   }
@@ -25,7 +26,7 @@ const Main = () => {
               {/* Main video container */}
               <div className="relative overflow-hidden rounded-[3vh] border border-white bg-white shadow-[0_25px_70px_rgba(7,59,76,0.12)]">
                 {/* Replace this div with your video */}
-                <div className="flex aspect-[4/3] asp items-center justify-center bg-[#dff5f4]">
+                <div className="flex aspect-4/3 asp items-center justify-center bg-[#dff5f4]">
                   <video
                     className="h-full w-full object-cover"
                     autoPlay

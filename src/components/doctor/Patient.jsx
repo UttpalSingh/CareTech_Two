@@ -405,7 +405,7 @@ const Patient = () => {
               {/* Graph */}
               <section className="w-full overflow-hidden rounded-2xl border border-[#d8eeee] bg-white shadow-[0_10px_35px_rgba(0,95,115,0.08)]">
                 {/* Header */}
-                <div className="border-b border-[#d8eeee] bg-gradient-to-r from-[#edfafa] to-white px-6 py-5">
+                <div className="border-b border-[#d8eeee]  from-[#edfafa] to-white px-6 py-5">
                   <div className="mt-1 flex items-center justify-between">
                     <div>
                       <h2 className="text-2xl font-bold text-[#073b4c]">
@@ -423,8 +423,8 @@ const Patient = () => {
                 <div className="p-5">
                   <div className="relative overflow-hidden rounded-xl border border-[#dceaea] bg-[#f8fcfc]">
                     {/* Graph */}
-                    <div className="flex min-h-[360px] w-full items-center justify-center p-4 md:p-6">
-                      <div className="h-[40vh] min-h-[300px] w-full max-w-[850px] overflow-hidden rounded-lg bg-white shadow-sm">
+                    <div className="flex min-h-[36vh] w-full items-center justify-center p-4 md:p-6">
+                      <div className="h-[40vh] min-h-[30vh] w-full max-w-[85vh] overflow-hidden rounded-lg bg-white shadow-sm">
                         <img
                           className="h-full w-full object-contain p-3"
                           src="/images/graph.png"
