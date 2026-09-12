@@ -23,9 +23,9 @@ const Main = () => {
           <div className="hidden w-1/2 pr-10 md:block">
             <div className="relative">
               {/* Main video container */}
-              <div className="relative overflow-hidden rounded-[2rem] border border-white bg-white shadow-[0_25px_70px_rgba(7,59,76,0.12)]">
+              <div className="relative overflow-hidden rounded-[3vh] border border-white bg-white shadow-[0_25px_70px_rgba(7,59,76,0.12)]">
                 {/* Replace this div with your video */}
-                <div className="flex aspect-[4/3] items-center justify-center bg-[#dff5f4]">
+                <div className="flex aspect-[4/3] asp items-center justify-center bg-[#dff5f4]">
                   <video
                     className="h-full w-full object-cover"
                     autoPlay
@@ -39,7 +39,7 @@ const Main = () => {
             </div>
           </div>
 
-          {/* ================= TEXT CONTENT ================= */}
+         {/* text content */}
           <div className="w-full md:w-1/2 md:pl-8">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#0a9396]/10 bg-[#0a9396]/10 px-4 py-2 text-sm font-medium text-[#087f82]">
               <span className="h-2 w-2 rounded-full bg-[#0a9396]" />

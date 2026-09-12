@@ -13,25 +13,29 @@ import  {Summary}  from "./components/summary/Summary";
 import Concerns from "./components/concerns/Concerns";
 import Final from "./components/final/Final";
 import Select from "./components/selectBranch/Select";
+import List from "./components/doctor/List";
+import Patient from "./components/doctor/Patient";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Front />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/otp" element={<Otp />} />
-        <Route path="/language" element={<Language />} />
-        <Route path="/consent" element={<Consent />} />
-        <Route path="/steps" element={<Steps />} />
-        <Route path="/mode" element={<Mode />} />
-        <Route path="/ayush" element={<Ayush />} />
-        <Route path="/general" element={<General/>} />
-        <Route path="/haverepo" element={<Haverepo/>} />
+        <Route path="/" element={<Front />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/otp" element={<Otp />}/>
+        <Route path="/language" element={<Language />}/>
+        <Route path="/consent" element={<Consent />}/>
+        <Route path="/steps" element={<Steps />}/>
+        <Route path="/mode" element={<Mode />}/>
+        <Route path="/ayush" element={<Ayush />}/>
+        <Route path="/general" element={<General/>}/>
+        <Route path="/haverepo" element={<Haverepo/>}/>
         <Route path="/summary" element={<Summary/>}/>
         <Route path="/concerns" element={<Concerns/>}/>
         <Route path="/final" element={<Final/>}/>
-        <Route path="/selectDomain" element={<Select/>} />
+        <Route path="/selectDomain" element={<Select/>}/>
+        <Route path="/list" element={<List/>}/>
+        <Route path="/patient" element={<Patient/>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -14,7 +14,7 @@ const Mode = () => {
 
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-[#f0fbfb] via-white to-[#e8f6f7] px-6 py-12">
+    <div className="min-h-screen w-full  from-[#f0fbfb] via-white to-[#e8f6f7] px-6 py-12">
       {/* Main Container */}
       <div className="mx-auto flex min-h-[85vh] max-w-5xl flex-col items-center justify-center">
         {/* Heading */}
@@ -57,7 +57,7 @@ const Mode = () => {
               </h2>
 
               {/* Description */}
-              <p className="mt-3 min-h-[72px] leading-6 text-gray-500">
+              <p className="mt-3 min-h-[7.2vh] leading-6 text-gray-500">
                 Record and organize your health information with an
                 approach focused on traditional Indian systems of medicine.
               </p>
@@ -97,7 +97,7 @@ const Mode = () => {
               </h2>
 
               {/* Description */}
-              <p className="mt-3 min-h-[72px] leading-6 text-gray-500">
+              <p className="mt-3 min-h-[7.2vh] leading-6 text-gray-500">
                 Create a structured medical history and organize your
                 healthcare information for general clinical use.
               </p>

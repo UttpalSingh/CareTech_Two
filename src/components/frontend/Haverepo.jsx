@@ -10,7 +10,7 @@ export const Haverepo = () => {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-[#f0fbfb] via-white to-[#e8f6f7] px-5 py-10">
+    <div className="min-h-screen w-full  from-[#f0fbfb] via-white to-[#e8f6f7] px-5 py-10">
       <div className="flex min-h-screen flex-col items-center justify-center">
         {/* CareTech Header */}
         <div className="mb-8 text-center">
@@ -31,7 +31,7 @@ export const Haverepo = () => {
         {/* Main Card */}
         <div className="w-full max-w-2xl rounded-3xl border border-gray-100 bg-white p-6 shadow-xl md:p-9">
           {/* Upload Box */}
-          <div className="group relative flex min-h-[280px] flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed border-[#bde5e4] bg-[#f7fcfc] px-6 text-center transition-all duration-300 hover:border-[#0a9396] hover:bg-[#eefafa]">
+          <div className="group relative flex min-h-[28vh] flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed border-[#bde5e4] bg-[#f7fcfc] px-6 text-center transition-all duration-300 hover:border-[#0a9396] hover:bg-[#eefafa]">
             {/* Decorative Circle */}
             <div className="absolute -right-14 -top-14 h-32 w-32 rounded-full bg-[#e3f6f5] transition-transform duration-500 group-hover:scale-125"></div>
 
