@@ -8,27 +8,27 @@ const Steps = () => {
   const steps = [
     {
       title: "Choose Your Mode",
-      image: "/public/images/mode.png",
+      image: "/images/mode.png",
     },
     {
       title: "Answer the Given Questions",
-      image: "/public/images/questions.png",
+      image: "/images/questions.png",
     },
     {
       title: "Upload Your Report",
-      image: "/public/images/uploadRepo.png",
+      image: "/images/uploadRepo.png",
     },
     {
       title: "Check or Edit Your Report",
-      image: "/public/images/edit.png",
+      image: "/images/edit.png",
     },
     {
       title: "Read Privacy And Policy",
-      image: "/public/images/concerns.png",
+      image: "/images/concerns.png",
     },
     {
       title: "Send Your Report",
-      image: "/public/images/send.png",
+      image: "/images/send.png",
     },
   ];
 
