@@ -15,10 +15,6 @@ const Final = () => {
     navigate("/");
   }
 
-  function doctorPage(){
-    navigate("/list")
-  }
-
   return (
     <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden from-[#eefafa] via-white to-[#e5f5f6] px-5 py-10">
 
@@ -106,7 +102,6 @@ const Final = () => {
 
         </div>
 
-        <div className="flex justify-end p-3"><button onClick={doctorPage} className="h-10 w-30 bg-[#005f73] text-white rounded-xl cursor-pointer">Doctor Portal</button></div>
       </div>
 
 

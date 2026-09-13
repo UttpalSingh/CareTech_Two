@@ -10,28 +10,28 @@ const Ayush = () => {
     {
       id: 1,
       dosha: "Vata",
-      letter: "Vata",
+      letter: "V",
       title: "Vata Dosha",
       question: "How would you describe your body structure and weight?",
     },
     {
       id: 2,
       dosha: "Vata",
-      letter: "Vata",
+      letter: "V",
       title: "Vata Dosha",
       question: "How would you describe your skin?",
     },
     {
       id: 3,
       dosha: "Vata",
-      letter: "Vata",
+      letter: "V",
       title: "Vata Dosha",
       question: "How would you describe your sleep pattern?",
     },
     {
       id: 4,
       dosha: "Pitta",
-      letter: "Pitta",
+      letter: "P",
       title: "Pitta Dosha",
       question:
         "How do you generally feel regarding body temperature and heat?",
@@ -39,35 +39,35 @@ const Ayush = () => {
     {
       id: 5,
       dosha: "Pitta",
-      letter: "Pitta",
+      letter: "P",
       title: "Pitta Dosha",
       question: "How would you describe your hunger and appetite?",
     },
     {
       id: 6,
       dosha: "Pitta",
-      letter: "Pitta",
+      letter: "P",
       title: "Pitta Dosha",
       question: "How would you describe your digestion?",
     },
     {
       id: 7,
       dosha: "Kapha",
-      letter: "Kapha",
+      letter: "K",
       title: "Kapha Dosha",
       question: "How would you describe your body and muscle development?",
     },
     {
       id: 8,
       dosha: "Kapha",
-      letter: "Kapha",
+      letter: "K",
       title: "Kapha Dosha",
       question: "How would you describe your skin and hair?",
     },
     {
       id: 9,
       dosha: "Kapha",
-      letter: "Kapha",
+      letter: "K",
       title: "Kapha Dosha",
       question: "How would you describe your usual activity and movement?",
     },
@@ -139,9 +139,12 @@ const Ayush = () => {
           </p>
         </div>
 
-        <div className="mb-6 flex justify-center">
+        <div className="mb-6 flex flex-col items-center gap-3 justify-center">
           <div className="rounded-full border border-[#bde5e4] bg-[#e7f7f7] px-5 py-2 text-sm font-semibold text-[#005f73]">
             Ayurveda • Yoga • Naturopathy • Unani • Siddha • Homoeopathy
+          </div>
+          <div className="rounded-full border border-[#bde5e4] bg-[#e7f7f7] px-3 py-2 text-sm font-semibold text-[#005f73]">
+            🌬️Vatta • 🪷Pitta • ☘️Kapha
           </div>
         </div>
 
