@@ -11,29 +11,16 @@ export const Summary = () => {
 
   return (
     <div className="min-h-screen w-full bg-[#f0fafa]">
-
-      {/* Header */}
       <div className="flex items-center justify-between border-b border-[#d6eeee] bg-white px-6 py-4 shadow-sm md:px-10">
-
-        {/* Logo */}
         <div className="flex items-center gap-2">
           <span className="text-2xl font-bold text-[#005f73]">
-            CareTech
-          </span>
-
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#005f73] text-2xl font-bold text-white">
-            +
+            CareTech +
           </span>
         </div>
 
-        {/* Page Title */}
         <div className="hidden text-right sm:block">
           <p className="text-sm font-semibold text-[#005f73]">
             Medical Summary
-          </p>
-
-          <p className="text-xs text-gray-400">
-            FHIR Structured Health Record
           </p>
         </div>
 
@@ -55,13 +42,9 @@ export const Summary = () => {
 
       </main>
 
-
-      {/* Bottom Action Bar */}
       <div className="sticky bottom-0 z-50 border-t border-[#d6eeee] bg-white/95 px-5 py-4 shadow-[0_-10px_30px_rgba(0,95,115,0.08)] backdrop-blur-md">
 
         <div className="mx-auto flex w-full max-w-[150vh] items-center justify-end gap-3">
-
-          {/* Edit Button */}
           <button
             type="button"
             className="flex items-center gap-2 rounded-xl border-2 border-[#005f73] bg-white px-6 py-3 text-sm font-semibold text-[#005f73] transition-all duration-300 hover:bg-[#eaf7f7] hover:shadow-md"
@@ -69,9 +52,6 @@ export const Summary = () => {
             <FiEdit3 size={18} />
             Edit
           </button>
-
-
-          {/* Upload Button */}
           <button
             onClick={nextPage}
             type="button"
