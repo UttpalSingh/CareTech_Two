@@ -13,8 +13,6 @@ import  {Summary}  from "./components/summary/Summary";
 import Concerns from "./components/concerns/Concerns";
 import Final from "./components/final/Final";
 import Select from "./components/selectBranch/Select";
-import List from "./components/doctor/List";
-import Patient from "./components/doctor/Patient";
 
 function App() {
   return (
@@ -34,8 +32,6 @@ function App() {
         <Route path="/concerns" element={<Concerns/>}/>
         <Route path="/final" element={<Final/>}/>
         <Route path="/selectDomain" element={<Select/>}/>
-        <Route path="/list" element={<List/>}/>
-        <Route path="/patient" element={<Patient/>}/>
       </Routes>
     </BrowserRouter>
   );
