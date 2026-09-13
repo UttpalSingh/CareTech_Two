@@ -289,6 +289,139 @@ const Patient = () => {
                 </div>
               </section>
 
+              {/* Graph */}
+              <section className="w-full overflow-hidden rounded-2xl border border-[#d8eeee] bg-white shadow-[0_10px_35px_rgba(0,95,115,0.08)]">
+                {/* Header */}
+                <div className="border-b border-[#d8eeee]  from-[#edfafa] to-white px-6 py-5">
+                  <div className="mt-1 flex items-center justify-between">
+                    <div>
+                      <h2 className="text-2xl font-bold text-[#073b4c]">
+                        Graph
+                      </h2>
+                    </div>
+
+                    <span className="hidden rounded-full bg-[#e7f6f6] px-3 py-1 text-xs font-bold text-[#007f86] sm:block">
+                      Complete Analysis
+                    </span>
+                  </div>
+                </div>
+
+                {/* Graph Content */}
+                <div className="p-5">
+                  <div className="relative overflow-hidden rounded-xl border border-[#dceaea] bg-[#f8fcfc]">
+                    {/* Graph */}
+                    <div className="flex min-h-[36vh] w-full items-center justify-center p-4 md:p-6">
+                      <div className="h-[40vh] min-h-[30vh] w-full max-w-[85vh] overflow-hidden rounded-lg bg-white shadow-sm">
+                        <img
+                          className="h-full w-full object-contain p-3"
+                          src="/images/graph_two.png"
+                          alt="CBC differential count graph"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex min-h-[36vh] w-full items-center justify-center p-4 md:p-6">
+                      <div className="h-[40vh] min-h-[30vh] w-full max-w-[85vh] overflow-hidden rounded-lg bg-white shadow-sm">
+                        <img
+                          className="h-full w-full object-contain p-3"
+                          src="/images/graph.png"
+                          alt="CBC differential count graph"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Summary */}
+              <section className="w-full overflow-hidden rounded-2xl border border-[#d8eeee] bg-white shadow-[0_10px_35px_rgba(0,95,115,0.08)]">
+                <div className="border-b border-[#d8eeee] from-[#edfafa] to-white px-6 py-5">
+                  <div className="mt-1 flex items-center justify-between">
+                    <div>
+                      <h2 className="text-2xl font-bold text-[#073b4c]">
+                        Patient Summary
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Summary Content */}
+                <div className="p-6">
+                  <div className="rounded-xl border border-[#dceaea] bg-[#f8fcfc] p-5">
+                    <div className="mb-3 flex items-center gap-3">
+                      <div>
+                        <p className="text-sm font-bold text-[#073b4c]">
+                          Clinical Summary
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className="text-sm leading-7 text-gray-600">
+                      The patient reports intermittent central chest pain that
+                      started a few weeks ago. The pain is described as
+                      pressure-like with occasional squeezing sensation and
+                      sometimes radiates toward the left shoulder. The patient
+                      also reports occasional shortness of breath and mild
+                      dizziness. The reported pain severity is approximately
+                      5/10 when it occurs.
+                    </p>
+                  </div>
+
+                  <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-3">
+                    {/* Genetic */}
+                    <div className="rounded-xl border border-[#e1eeee] bg-white p-5">
+                      <div className="flex items-center gap-3">
+                        <div>
+                          <p className="text-xs font-bold uppercase tracking-wide text-[#0a9396]">
+                            Genetic History
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-4 rounded-lg p-3">
+                        <p className="text-sm leading-6 text-gray-600">
+                          No known genetic or hereditary heart condition
+                          reported.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Surgery */}
+                    <div className="rounded-xl border border-[#e1eeee] bg-white p-5">
+                      <div className="flex items-center gap-3">
+                        <div>
+                          <p className="text-xs font-bold uppercase tracking-wide text-[#0a9396]">
+                            Surgical History
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-4 rounded-lg bg-[#f7fbfb] p-3">
+                        <p className="text-sm leading-6 text-gray-600">
+                          No previous major surgery reported.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Medication */}
+                    <div className="rounded-xl border border-[#e1eeee] bg-white p-5">
+                      <div className="flex items-center gap-3">
+                        <div>
+                          <p className="text-xs font-bold uppercase tracking-wide text-[#0a9396]">
+                            Medication History
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-4 rounded-lg bg-[#f7fbfb] p-3">
+                        <p className="text-sm leading-6 text-gray-600">
+                          Patient reports particular medication use.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* report */}
               <section className="w-full overflow-hidden rounded-2xl border border-[#d8eeee] bg-white shadow-[0_10px_35px_rgba(0,95,115,0.08)]">
                 {/* Reports Header */}
@@ -397,130 +530,6 @@ const Patient = () => {
                       <p className="mt-0.5 text-xs text-gray-400">
                         Patient medical document
                       </p>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* Graph */}
-              <section className="w-full overflow-hidden rounded-2xl border border-[#d8eeee] bg-white shadow-[0_10px_35px_rgba(0,95,115,0.08)]">
-                {/* Header */}
-                <div className="border-b border-[#d8eeee]  from-[#edfafa] to-white px-6 py-5">
-                  <div className="mt-1 flex items-center justify-between">
-                    <div>
-                      <h2 className="text-2xl font-bold text-[#073b4c]">
-                        Graph
-                      </h2>
-                    </div>
-
-                    <span className="hidden rounded-full bg-[#e7f6f6] px-3 py-1 text-xs font-bold text-[#007f86] sm:block">
-                      Complete Analysis
-                    </span>
-                  </div>
-                </div>
-
-                {/* Graph Content */}
-                <div className="p-5">
-                  <div className="relative overflow-hidden rounded-xl border border-[#dceaea] bg-[#f8fcfc]">
-                    {/* Graph */}
-                    <div className="flex min-h-[36vh] w-full items-center justify-center p-4 md:p-6">
-                      <div className="h-[40vh] min-h-[30vh] w-full max-w-[85vh] overflow-hidden rounded-lg bg-white shadow-sm">
-                        <img
-                          className="h-full w-full object-contain p-3"
-                          src="/images/graph.png"
-                          alt="CBC differential count graph"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* Summary */}
-              <section className="w-full overflow-hidden rounded-2xl border border-[#d8eeee] bg-white shadow-[0_10px_35px_rgba(0,95,115,0.08)]">
-                <div className="border-b border-[#d8eeee] from-[#edfafa] to-white px-6 py-5">
-                  <div className="mt-1 flex items-center justify-between">
-                    <div>
-                      <h2 className="text-2xl font-bold text-[#073b4c]">
-                        Patient Summary
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Summary Content */}
-                <div className="p-6">
-                  <div className="rounded-xl border border-[#dceaea] bg-[#f8fcfc] p-5">
-                    <div className="mb-3 flex items-center gap-3">
-                      <div>
-                        <p className="text-sm font-bold text-[#073b4c]">
-                          Clinical Summary
-                        </p>
-                      </div>
-                    </div>
-
-                    <p className="text-sm leading-7 text-gray-600">
-                      The patient reports intermittent central chest pain that
-                      started a few weeks ago. The pain is described as
-                      pressure-like with occasional squeezing sensation and
-                      sometimes radiates toward the left shoulder. The patient
-                      also reports occasional shortness of breath and mild
-                      dizziness. The reported pain severity is approximately
-                      5/10 when it occurs.
-                    </p>
-                  </div>
-
-                  <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-3">
-                    {/* Genetic */}
-                    <div className="rounded-xl border border-[#e1eeee] bg-white p-5">
-                      <div className="flex items-center gap-3">
-                        <div>
-                          <p className="text-xs font-bold uppercase tracking-wide text-[#0a9396]">
-                            Genetic History
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="mt-4 rounded-lg p-3">
-                        <p className="text-sm leading-6 text-gray-600">
-                          No known genetic or hereditary heart condition
-                          reported.
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Surgery */}
-                    <div className="rounded-xl border border-[#e1eeee] bg-white p-5">
-                      <div className="flex items-center gap-3">
-                        <div>
-                          <p className="text-xs font-bold uppercase tracking-wide text-[#0a9396]">
-                            Surgical History
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="mt-4 rounded-lg bg-[#f7fbfb] p-3">
-                        <p className="text-sm leading-6 text-gray-600">
-                          No previous major surgery reported.
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Medication */}
-                    <div className="rounded-xl border border-[#e1eeee] bg-white p-5">
-                      <div className="flex items-center gap-3">
-                        <div>
-                          <p className="text-xs font-bold uppercase tracking-wide text-[#0a9396]">
-                            Medication History
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="mt-4 rounded-lg bg-[#f7fbfb] p-3">
-                        <p className="text-sm leading-6 text-gray-600">
-                          Patient reports no regular medication use.
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </div>
