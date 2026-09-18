@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { MdOutlineMicNone } from "react-icons/md";
+
+import { MdOutlineMicNone, MdMic } from "react-icons/md";
+
 import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
+
 import { useNavigate } from "react-router-dom";
 
 const Ayush = () => {
@@ -14,6 +17,7 @@ const Ayush = () => {
       title: "Vata Dosha",
       question: "How would you describe your body structure and weight?",
     },
+
     {
       id: 2,
       dosha: "Vata",
@@ -21,6 +25,7 @@ const Ayush = () => {
       title: "Vata Dosha",
       question: "How would you describe your skin?",
     },
+
     {
       id: 3,
       dosha: "Vata",
@@ -28,6 +33,7 @@ const Ayush = () => {
       title: "Vata Dosha",
       question: "How would you describe your sleep pattern?",
     },
+
     {
       id: 4,
       dosha: "Pitta",
@@ -36,6 +42,7 @@ const Ayush = () => {
       question:
         "How do you generally feel regarding body temperature and heat?",
     },
+
     {
       id: 5,
       dosha: "Pitta",
@@ -43,6 +50,7 @@ const Ayush = () => {
       title: "Pitta Dosha",
       question: "How would you describe your hunger and appetite?",
     },
+
     {
       id: 6,
       dosha: "Pitta",
@@ -50,6 +58,7 @@ const Ayush = () => {
       title: "Pitta Dosha",
       question: "How would you describe your digestion?",
     },
+
     {
       id: 7,
       dosha: "Kapha",
@@ -57,6 +66,7 @@ const Ayush = () => {
       title: "Kapha Dosha",
       question: "How would you describe your body and muscle development?",
     },
+
     {
       id: 8,
       dosha: "Kapha",
@@ -64,6 +74,7 @@ const Ayush = () => {
       title: "Kapha Dosha",
       question: "How would you describe your skin and hair?",
     },
+
     {
       id: 9,
       dosha: "Kapha",
@@ -74,13 +85,75 @@ const Ayush = () => {
   ];
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
+
   const [answer, setAnswer] = useState("");
+
   const [storeValue, setStoreValue] = useState([]);
 
+  // Voice recognition state
+  const [selectedLanguage, setSelectedLanguage] = useState("en-IN");
+  const [isListening, setIsListening] = useState(false);
+
   const question = questions[currentQuestion];
+
   const isFirstQuestion = currentQuestion === 0;
+
   const isLastQuestion = currentQuestion === questions.length - 1;
+
   const progress = ((currentQuestion + 1) / questions.length) * 100;
+
+  const handleVoiceInput = () => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      return;
+    }
+
+    if (isListening) {
+      setIsListening(false);
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+
+    // Selected language
+    recognition.lang = selectedLanguage;
+
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+      setIsListening(true);
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+
+      setAnswer((previousAnswer) => {
+        if (previousAnswer.trim()) {
+          return `${previousAnswer} ${transcript}`;
+        }
+
+        return transcript;
+      });
+    };
+
+    recognition.onerror = (event) => {
+      console.log("Speech recognition error:", event.error);
+      setIsListening(false);
+
+      if (event.error === "not-allowed") {
+        console.log("Please allow microphone permission.");
+      }
+    };
+
+    recognition.onend = () => {
+      setIsListening(false);
+    };
+
+    recognition.start();
+  };
 
   const handleNext = () => {
     if (!answer.trim()) return;
@@ -92,6 +165,7 @@ const Ayush = () => {
     };
 
     const updatedAnswers = [...storeValue, newAns];
+
     setStoreValue(updatedAnswers);
 
     if (isLastQuestion) {
@@ -100,13 +174,14 @@ const Ayush = () => {
     }
 
     setCurrentQuestion((prev) => prev + 1);
+
     setAnswer("");
   };
 
-  useEffect(() => {
-    console.log(storeValue);
-    // store data in local storage
-  }, [storeValue]);
+  // useEffect(() => {
+  //   // console.log(storeValue);
+  //   // store data in local storage
+  // }, [storeValue]);
 
   const handlePrevious = () => {
     if (currentQuestion > 0) {
@@ -121,9 +196,10 @@ const Ayush = () => {
   };
 
   return (
-    <div className="min-h-screen w-full  from-[#f0fbfb] via-white to-[#e8f6f7] px-5 py-10">
+    <div className="min-h-screen w-full from-[#f0fbfb] via-white to-[#e8f6f7] px-5 py-10">
       <div className="mx-auto flex min-h-[90vh] max-w-4xl flex-col justify-center">
-        {/* ---------------- Header ---------------- */}
+        {/* Header */}
+
         <div className="mb-8 text-center">
           <span className="text-xl font-semibold uppercase tracking-[0.25em] text-[#0a9396]">
             CareTech+
@@ -139,14 +215,17 @@ const Ayush = () => {
           </p>
         </div>
 
-        <div className="mb-6 flex flex-col items-center gap-3 justify-center">
+        <div className="mb-6 flex flex-col items-center justify-center gap-3">
           <div className="rounded-full border border-[#bde5e4] bg-[#e7f7f7] px-5 py-2 text-sm font-semibold text-[#005f73]">
             Ayurveda • Yoga • Naturopathy • Unani • Siddha • Homoeopathy
           </div>
+
           <div className="rounded-full border border-[#bde5e4] bg-[#e7f7f7] px-3 py-2 text-sm font-semibold text-[#005f73]">
             🌬️Vatta • 🪷Pitta • ☘️Kapha
           </div>
         </div>
+
+        {/* Progress */}
 
         <div className="mb-6">
           <div className="mb-2 flex items-center justify-between text-sm">
@@ -166,6 +245,8 @@ const Ayush = () => {
             ></div>
           </div>
         </div>
+
+        {/* Question Card  */}
 
         <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-7 shadow-xl md:p-10">
           <div className="relative">
@@ -187,40 +268,96 @@ const Ayush = () => {
               </h2>
             </div>
 
+            {/* Microphone */}
+
             <div className="mt-8">
+              <div className="mb-4 flex items-center justify-between">
+                <label className="text-sm font-semibold text-gray-600">
+                  Select Language
+                </label>
+
+                <div className="flex rounded-xl border border-[#bde5e4] bg-[#e7f7f7] p-1">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedLanguage("en-IN")}
+                    className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
+                      selectedLanguage === "en-IN"
+                        ? "bg-[#0a9396] text-white shadow-sm"
+                        : "text-[#005f73] hover:bg-white"
+                    }`}
+                  >
+                    English
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setSelectedLanguage("hi-IN")}
+                    className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
+                      selectedLanguage === "hi-IN"
+                        ? "bg-[#0a9396] text-white shadow-sm"
+                        : "text-[#005f73] hover:bg-white"
+                    }`}
+                  >
+                    हिंदी
+                  </button>
+                </div>
+              </div>
+
               <label className="mb-2 block text-sm font-semibold text-gray-600">
                 Your Answer
               </label>
 
-              <div className="flex items-center gap-3 rounded-2xl border-2 border-gray-200 bg-gray-50 p-2 transition-all duration-300 focus-within:border-[#0a9396] focus-within:bg-white focus-within:shadow-md">
+              <div
+                className={`flex items-center gap-3 rounded-2xl border-2 bg-gray-50 p-2 transition-all duration-300 ${
+                  isListening
+                    ? "border-green-400 bg-red-50 shadow-md"
+                    : "border-gray-200 focus-within:border-[#0a9396] focus-within:bg-white focus-within:shadow-md"
+                }`}
+              >
                 <input
                   type="text"
                   value={answer}
                   onChange={(e) => setAnswer(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      handleNext();
-                    }
-                  }}
-                  placeholder="Type your answer here..."
+                  placeholder={
+                    isListening
+                      ? selectedLanguage === "hi-IN"
+                        ? "सुन रहा हूँ... अपना उत्तर बोलें"
+                        : "Listening... Speak your answer"
+                      : selectedLanguage === "hi-IN"
+                        ? "अपना उत्तर यहाँ लिखें..."
+                        : "Type your answer here..."
+                  }
                   className="h-12 flex-1 bg-transparent px-4 text-gray-700 outline-none placeholder:text-gray-400"
                 />
 
                 <button
                   type="button"
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#e0f4f4] text-[#005f73] transition-all duration-300 hover:bg-[#0a9396] hover:text-white"
-                  title="Speak your answer"
+                  onClick={handleVoiceInput}
+                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-all duration-300 ${
+                    isListening
+                      ? "animate-pulse bg-green-500 text-white"
+                      : "bg-[#e0f4f4] text-[#005f73] hover:bg-[#0a9396] hover:text-white"
+                  }`}
+                  title={
+                    isListening
+                      ? "Stop listening"
+                      : selectedLanguage === "hi-IN"
+                        ? "अपना उत्तर बोलें"
+                        : "Speak your answer"
+                  }
                 >
-                  <MdOutlineMicNone size={25} />
+                  {isListening ? (
+                    <MdMic size={25} />
+                  ) : (
+                    <MdOutlineMicNone size={25} />
+                  )}
                 </button>
               </div>
-
-              <p className="mt-3 text-xs text-gray-400">
-                You can type your answer or use the microphone to speak.
-              </p>
             </div>
+
             <div className="mt-10 flex items-center justify-between border-t border-gray-100 pt-6">
               {/* Previous */}
+
               <button
                 type="button"
                 onClick={handlePrevious}
@@ -236,6 +373,7 @@ const Ayush = () => {
               </button>
 
               {/* Next */}
+
               <button
                 type="button"
                 onClick={handleNext}
@@ -247,22 +385,21 @@ const Ayush = () => {
                 }`}
               >
                 {isLastQuestion ? "Complete" : "Next Question"}
+
                 {!isLastQuestion && <GrLinkNext />}
               </button>
             </div>
           </div>
         </div>
 
-        {/* question */}
+        {/* Question*/}
+
         <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
           {questions.map((item, index) => (
             <React.Fragment key={item.id}>
               <button
                 type="button"
-                onClick={() => {
-                  setCurrentQuestion(index);
-                  setAnswer("");
-                }}
+                onClick={() => handleSelectQuestion(index)}
                 title={item.title}
                 className={`flex h-10 w-10 items-center justify-center rounded-full text-xs font-bold transition-all duration-300 ${
                   index === currentQuestion
@@ -274,6 +411,7 @@ const Ayush = () => {
               >
                 {item.letter}
               </button>
+
               {item.title === "Chief Complaint" && (
                 <span className="text-xl font-bold text-[#005f73]">-</span>
               )}
