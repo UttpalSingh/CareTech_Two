@@ -12,75 +12,119 @@ const Ayush = () => {
   const questions = [
     {
       id: 1,
-      dosha: "Vata",
-      letter: "V",
-      title: "Vata Dosha",
-      question: "How would you describe your body structure and weight?",
+      letter: "P",
+      title: "Prakriti",
+      question: "Your natural body build is:",
+      options: [
+        "Thin/slender",
+        "Medium/proportionate",
+        "Broad/sturdy",
+      ],
     },
 
     {
       id: 2,
-      dosha: "Vata",
-      letter: "V",
-      title: "Vata Dosha",
-      question: "How would you describe your skin?",
+      letter: "P",
+      title: "Prakriti",
+      question: "Your usual nature is:",
+      options: [
+        "Active, quick, sometimes restless",
+        "Focused, intense, easily irritated",
+        "Calm, steady, relaxed",
+      ],
     },
 
     {
       id: 3,
-      dosha: "Vata",
       letter: "V",
-      title: "Vata Dosha",
-      question: "How would you describe your sleep pattern?",
+      title: "Vikriti",
+      question: "Compared with your usual health, what has changed recently?",
+      options: [
+        "Increased dryness or sensitivity to cold",
+        "Increased heat or burning sensation",
+        "Increased heaviness or sluggishness",
+        "No significant change",
+      ],
     },
 
     {
       id: 4,
-      dosha: "Pitta",
-      letter: "P",
-      title: "Pitta Dosha",
-      question:
-        "How do you generally feel regarding body temperature and heat?",
+      letter: "V",
+      title: "Vikriti",
+      question: "Which symptom has been most prominent recently?",
+      options: [
+        "Pain/stiffness or difficulty passing stool",
+        "Acidity/burning or excessive sweating",
+        "Congestion/swelling or excessive mucus",
+        "None of these",
+      ],
     },
 
     {
       id: 5,
-      dosha: "Pitta",
-      letter: "P",
-      title: "Pitta Dosha",
-      question: "How would you describe your hunger and appetite?",
+      letter: "V",
+      title: "Agni",
+      question: "How is your appetite?",
+      options: [
+        "Irregular",
+        "Strong/excessive",
+        "Low/slow",
+        "Regular",
+      ],
     },
 
     {
       id: 6,
-      dosha: "Pitta",
-      letter: "P",
-      title: "Pitta Dosha",
-      question: "How would you describe your digestion?",
+      letter: "A",
+      title: "Agni",
+      question: "How do you generally feel after eating?",
+      options: [
+        "Digestion feels unpredictable",
+        "Feel hungry again quickly",
+        "Feel heavy for a long time",
+        "Feel comfortable and satisfied",
+      ],
     },
 
     {
       id: 7,
-      dosha: "Kapha",
-      letter: "K",
-      title: "Kapha Dosha",
-      question: "How would you describe your body and muscle development?",
+      letter: "Ah",
+      title: "Ahara",
+      question: "How regular are your meals?",
+      options: ["Regular and at fixed times", "Irregular/skipped frequently"],
     },
 
     {
       id: 8,
-      dosha: "Kapha",
-      letter: "K",
-      title: "Kapha Dosha",
-      question: "How would you describe your skin and hair?",
+      letter: "Ah",
+      title: "Ahara",
+      question: "What best describes your usual food choices?",
+      options: [
+        "Mostly fresh, home-cooked food",
+        "Frequently spicy/oily food",
+        "Frequently sweet/heavy/processed food",
+        "Mixed",
+      ],
     },
 
     {
       id: 9,
-      dosha: "Kapha",
-      letter: "K",
-      title: "Kapha Dosha",
-      question: "How would you describe your usual activity and movement?",
+      letter: "V",
+      title: "Vihara",
+      question: "How would you describe your usual physical activity?",
+      options: ["Low/sedentary", "Moderate", "High/physically active"],
+    },
+
+    {
+      id: 10,
+      letter: "V",
+      title: "Vihara",
+      question: "How would you describe your daily routine and sleep schedule?",
+      options: [
+        "Regular and consistent",
+        "Irregular/disturbed",
+        "Frequently sleep during the day or oversleep",
+      ],
     },
   ];
 
@@ -91,7 +135,7 @@ const Ayush = () => {
   const [storeValue, setStoreValue] = useState([]);
 
   // Voice recognition state
-  const [selectedLanguage, setSelectedLanguage] = useState("en-IN");
+  const [selectedLanguage, setSelectedLanguage] = useState("hi-IN");
   const [isListening, setIsListening] = useState(false);
 
   const question = questions[currentQuestion];
@@ -155,6 +199,41 @@ const Ayush = () => {
     recognition.start();
   };
 
+  const handleSpeakQuestion = () => {
+    window.speechSynthesis.cancel();
+
+    const voices = window.speechSynthesis.getVoices();
+
+    const femaleVoice = voices.find((voice) =>
+      /female|samantha|karen|moira|google.*female|microsoft.*zira/i.test(
+        voice.name,
+      ),
+    );
+
+    const optionsText = question.options
+      .map(
+        (option, index) =>
+          `Option ${String.fromCharCode(65 + index)}. ${option}`,
+      )
+      .join(". ");
+
+    const fullText = `${question.question}. ${optionsText}`;
+
+    const speech = new SpeechSynthesisUtterance(fullText);
+
+    speech.voice = femaleVoice || voices[0];
+    speech.lang = selectedLanguage;
+    speech.rate = 0.9;
+    speech.pitch = 1;
+    speech.volume = 1;
+
+    window.speechSynthesis.speak(speech);
+  };
+
+  const handleOptionSelect = (option) => {
+    setAnswer(option);
+  };
+
   const handleNext = () => {
     if (!answer.trim()) return;
 
@@ -208,20 +287,11 @@ const Ayush = () => {
           <h1 className="mt-3 text-3xl font-bold text-gray-800 md:text-4xl">
             AYUSH Health Assessment
           </h1>
-
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-gray-500 md:text-base">
-            Tell us about your health, lifestyle, diet, and wellbeing to help
-            create a comprehensive AYUSH health history.
-          </p>
         </div>
 
         <div className="mb-6 flex flex-col items-center justify-center gap-3">
-          <div className="rounded-full border border-[#bde5e4] bg-[#e7f7f7] px-5 py-2 text-sm font-semibold text-[#005f73]">
-            Ayurveda • Yoga • Naturopathy • Unani • Siddha • Homoeopathy
-          </div>
-
           <div className="rounded-full border border-[#bde5e4] bg-[#e7f7f7] px-3 py-2 text-sm font-semibold text-[#005f73]">
-            🌬️Vatta • 🪷Pitta • ☘️Kapha
+            🌳Prakriti • ⚖️Vikriti • 🔥Agni • 🌽Ahara • 🧘Vihara
           </div>
         </div>
 
@@ -262,11 +332,70 @@ const Ayush = () => {
               </div>
             </div>
 
-            <div className="mt-8">
+            {/* Question */}
+
+            <div className="mt-8 flex items-center justify-between gap-4">
               <h2 className="text-2xl font-bold leading-relaxed text-gray-800 md:text-3xl">
                 {question.question}
               </h2>
+
+              <button
+                type="button"
+                onClick={handleSpeakQuestion}
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e0f4f4] text-[#005f73] shadow-sm transition-all duration-300 hover:bg-[#0a9396] hover:text-white hover:scale-105"
+                title={
+                  selectedLanguage === "hi-IN"
+                    ? "प्रश्न और विकल्प सुनें"
+                    : "Listen to question and options"
+                }
+              >
+                <MdOutlineMicNone size={25} />
+              </button>
             </div>
+
+            {/* Answer Options */}
+
+            <div className="mt-8 grid gap-3">
+              {question.options?.map((option, index) => (
+                <div
+                  key={index}
+                  className={`flex items-center gap-3 rounded-xl border-2 p-3 transition-all duration-200 ${
+                    answer === option
+                      ? "border-[#0a9396] bg-[#e7f7f7] shadow-sm"
+                      : "border-gray-200 bg-white hover:border-[#0a9396] hover:bg-[#f5fbfb]"
+                  }`}
+                >
+                  {/* Select Option */}
+                  <button
+                    type="button"
+                    onClick={() => handleOptionSelect(option)}
+                    className="flex flex-1 items-center gap-3 p-2 text-left"
+                  >
+                    <span
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
+                        answer === option
+                          ? "bg-[#0a9396] text-white"
+                          : "bg-[#e7f7f7] text-[#005f73]"
+                      }`}
+                    >
+                      {String.fromCharCode(65 + index)}
+                    </span>
+
+                    <span
+                      className={`text-sm font-medium ${
+                        answer === option ? "text-[#005f73]" : "text-gray-600"
+                      }`}
+                    >
+                      {option}
+                    </span>
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            {/* Microphone */}
+
+            <div className="mt-8"></div>
 
             {/* Microphone */}
 

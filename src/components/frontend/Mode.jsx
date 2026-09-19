@@ -3,14 +3,25 @@ import { FaLeaf, FaStethoscope, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Mode = () => {
+  let selected = "ayush"
+
   const navigate = useNavigate();
 
-  function ayushPage() {
-    navigate("/ayush");
-  }
-  function generalPage() {
-    navigate("/general");
-  }
+function ayushPage() {
+  navigate("/selectDomain", {
+    state: {
+      selected: "ayush",
+    },
+  });
+}
+function generalPage() {
+  navigate("/selectDomain", {
+    state: {
+      selected: "general",
+    },
+  });
+}
+
 
   return (
     <div className="min-h-screen w-full  from-[#f0fbfb] via-white to-[#e8f6f7] px-6 py-12">

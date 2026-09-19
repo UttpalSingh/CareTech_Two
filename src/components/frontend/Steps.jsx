@@ -33,7 +33,7 @@ const Steps = () => {
   ];
 
   function handleMode() {
-    navigate("/selectDomain");
+    navigate("/mode");
   }
 
   return (

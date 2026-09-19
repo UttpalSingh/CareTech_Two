@@ -104,9 +104,7 @@ const General = () => {
 
     // Check browser support
     if (!SpeechRecognition) {
-      alert(
-        "Voice recognition is not supported in this browser. Please use Google Chrome."
-      );
+      console.log("Voice recognition is not supported in this browser");
       return;
     }
 
@@ -154,7 +152,7 @@ const General = () => {
 
       if (event.error === "not-allowed") {
         alert(
-          "Microphone permission was denied. Please allow microphone access."
+          "Microphone permission was denied. Please allow microphone access.",
         );
       }
 
@@ -170,6 +168,28 @@ const General = () => {
     };
 
     recognition.start();
+  };
+
+  const handleSpeakQuestion = () => {
+    window.speechSynthesis.cancel();
+
+    const voices = window.speechSynthesis.getVoices();
+
+    const femaleVoice = voices.find((voice) =>
+      /female|samantha|karen|moira|google.*female|microsoft.*zira/i.test(
+        voice.name,
+      ),
+    );
+
+    const speech = new SpeechSynthesisUtterance(question.question);
+
+    speech.voice = femaleVoice || voices[0];
+    speech.lang = selectedLanguage;
+    speech.rate = 1.1;
+    speech.pitch = 1.2;
+    speech.volume = 1;
+
+    window.speechSynthesis.speak(speech);
   };
 
   const handleNext = () => {
@@ -201,8 +221,6 @@ const General = () => {
 
   // }, [storeValue]);
 
-
-
   const handlePrevious = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
@@ -214,7 +232,6 @@ const General = () => {
   return (
     <div className="min-h-screen w-full from-[#f0fbfb] via-white to-[#e8f6f7] px-5 py-10">
       <div className="mx-auto flex min-h-[90vh] max-w-4xl flex-col justify-center">
-
         {/* Header */}
 
         <div className="mb-8 text-center">
@@ -257,8 +274,6 @@ const General = () => {
 
         <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-7 shadow-xl md:p-10">
           <div className="relative">
-
-
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#0a9396] text-2xl font-bold text-white shadow-md">
                 {question.letter}
@@ -269,22 +284,33 @@ const General = () => {
                   {question.letter} — {question.title}
                 </p>
 
-                <p className="mt-1 text-sm text-gray-400">
-                  Medical History
-                </p>
+                <p className="mt-1 text-sm text-gray-400">Medical History</p>
               </div>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 flex items-center justify-between gap-4">
               <h2 className="text-2xl font-bold leading-relaxed text-gray-800 md:text-3xl">
                 {question.question}
               </h2>
+
+              {/* Question Speaker */}
+              <button
+                type="button"
+                onClick={handleSpeakQuestion}
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e0f4f4] text-[#005f73] shadow-sm transition-all duration-300 hover:scale-105 hover:bg-[#0a9396] hover:text-white"
+                title={
+                  selectedLanguage === "hi-IN"
+                    ? "प्रश्न सुनें"
+                    : "Listen to question"
+                }
+              >
+                <MdOutlineMicNone size={25} />
+              </button>
             </div>
 
             {/* Answer  */}
 
             <div className="mt-8">
-
               {/* Language  */}
 
               <div className="mb-4 flex items-center justify-between">
@@ -293,7 +319,6 @@ const General = () => {
                 </label>
 
                 <div className="flex rounded-xl border border-[#bde5e4] bg-[#e7f7f7] p-1">
-
                   {/* English */}
 
                   <button
@@ -321,7 +346,6 @@ const General = () => {
                   >
                     हिंदी
                   </button>
-
                 </div>
               </div>
 
@@ -338,7 +362,6 @@ const General = () => {
                     : "border-gray-200 focus-within:border-[#0a9396] focus-within:bg-white focus-within:shadow-md"
                 }`}
               >
-
                 <input
                   type="text"
                   value={answer}
@@ -384,7 +407,6 @@ const General = () => {
                     <MdOutlineMicNone size={25} />
                   )}
                 </button>
-
               </div>
 
               {/* Listening Message */}
@@ -404,13 +426,11 @@ const General = () => {
                     : "You can type your answer or use the microphone to speak."}
                 </p>
               )}
-
             </div>
 
             {/* Navigation */}
 
             <div className="mt-10 flex items-center justify-between border-t border-gray-100 pt-6">
-
               {/* Previous */}
 
               <button
@@ -424,7 +444,6 @@ const General = () => {
                 }`}
               >
                 <GrLinkPrevious />
-
                 Previous
               </button>
 
@@ -446,7 +465,6 @@ const General = () => {
 
                 {currentQuestion !== questions.length - 1 && <GrLinkNext />}
               </button>
-
             </div>
           </div>
         </div>
@@ -456,7 +474,6 @@ const General = () => {
         <div className="mt-7 flex items-center justify-center gap-2">
           {questions.map((item, index) => (
             <React.Fragment key={index}>
-
               <button
                 type="button"
                 onClick={() => {
@@ -477,11 +494,8 @@ const General = () => {
               {/* Dash after Chief Complaint */}
 
               {item.title === "Chief Complaint" && (
-                <span className="text-xl font-bold text-[#005f73]">
-                  -
-                </span>
+                <span className="text-xl font-bold text-[#005f73]">-</span>
               )}
-
             </React.Fragment>
           ))}
         </div>
@@ -491,7 +505,6 @@ const General = () => {
         <p className="mt-6 text-center text-xs text-gray-400">
           Your answers are used to create your structured medical history.
         </p>
-
       </div>
     </div>
   );

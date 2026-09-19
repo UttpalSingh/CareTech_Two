@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   FiActivity,
   FiHeart,
@@ -14,6 +14,9 @@ import {
 
 const Select = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const selected = location.state?.selected;
 
   const domains = [
     {
@@ -79,8 +82,20 @@ const Select = () => {
   ];
 
   function handleSelect(domain) {
-    console.log("Selected domain:", domain);
-    navigate("/mode")
+    // console.log("Selected domain:", domain);
+    if (selected === "ayush") {
+      navigate("/ayush", {
+        state: {
+          selected: "ayush",
+        },
+      });
+    } else if (selected === "general") {
+      navigate("/general", {
+        state: {
+          selected: "general",
+        },
+      });
+    }
   }
 
   return (
