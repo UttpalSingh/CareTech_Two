@@ -1,129 +1,135 @@
 import React, { useEffect, useState } from "react";
-
+import { useLanguage } from "../../context/LanguageContext.jsx";
 import { MdOutlineMicNone, MdMic } from "react-icons/md";
-
 import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
-
 import { useNavigate } from "react-router-dom";
 
 const Ayush = () => {
   const navigate = useNavigate();
+  const { t, language } = useLanguage();
 
   const questions = [
     {
       id: 1,
       letter: "P",
-      title: "Prakriti",
-      question: "Your natural body build is:",
+      title: t("ayush.sections.prakriti"),
+      question: t("ayush.questions.q1.question"),
       options: [
-        "Thin/slender",
-        "Medium/proportionate",
-        "Broad/sturdy",
+        t("ayush.questions.q1.options.0"),
+        t("ayush.questions.q1.options.1"),
+        t("ayush.questions.q1.options.2"),
       ],
     },
 
     {
       id: 2,
       letter: "P",
-      title: "Prakriti",
-      question: "Your usual nature is:",
+      title: t("ayush.sections.prakriti"),
+      question: t("ayush.questions.q2.question"),
       options: [
-        "Active, quick, sometimes restless",
-        "Focused, intense, easily irritated",
-        "Calm, steady, relaxed",
+        t("ayush.questions.q2.options.0"),
+        t("ayush.questions.q2.options.1"),
+        t("ayush.questions.q2.options.2"),
       ],
     },
 
     {
       id: 3,
       letter: "V",
-      title: "Vikriti",
-      question: "Compared with your usual health, what has changed recently?",
+      title: t("ayush.sections.vikriti"),
+      question: t("ayush.questions.q3.question"),
       options: [
-        "Increased dryness or sensitivity to cold",
-        "Increased heat or burning sensation",
-        "Increased heaviness or sluggishness",
-        "No significant change",
+        t("ayush.questions.q3.options.0"),
+        t("ayush.questions.q3.options.1"),
+        t("ayush.questions.q3.options.2"),
+        t("ayush.questions.q3.options.3"),
       ],
     },
 
     {
       id: 4,
       letter: "V",
-      title: "Vikriti",
-      question: "Which symptom has been most prominent recently?",
+      title: t("ayush.sections.vikriti"),
+      question: t("ayush.questions.q4.question"),
       options: [
-        "Pain/stiffness or difficulty passing stool",
-        "Acidity/burning or excessive sweating",
-        "Congestion/swelling or excessive mucus",
-        "None of these",
+        t("ayush.questions.q4.options.0"),
+        t("ayush.questions.q4.options.1"),
+        t("ayush.questions.q4.options.2"),
+        t("ayush.questions.q4.options.3"),
       ],
     },
 
     {
       id: 5,
       letter: "V",
-      title: "Agni",
-      question: "How is your appetite?",
+      title: t("ayush.sections.agni"),
+      question: t("ayush.questions.q5.question"),
       options: [
-        "Irregular",
-        "Strong/excessive",
-        "Low/slow",
-        "Regular",
+        t("ayush.questions.q5.options.0"),
+        t("ayush.questions.q5.options.1"),
+        t("ayush.questions.q5.options.2"),
+        t("ayush.questions.q5.options.3"),
       ],
     },
 
     {
       id: 6,
       letter: "A",
-      title: "Agni",
-      question: "How do you generally feel after eating?",
+      title: t("ayush.sections.agni"),
+      question: t("ayush.questions.q6.question"),
       options: [
-        "Digestion feels unpredictable",
-        "Feel hungry again quickly",
-        "Feel heavy for a long time",
-        "Feel comfortable and satisfied",
+        t("ayush.questions.q6.options.0"),
+        t("ayush.questions.q6.options.1"),
+        t("ayush.questions.q6.options.2"),
+        t("ayush.questions.q6.options.3"),
       ],
     },
 
     {
       id: 7,
       letter: "Ah",
-      title: "Ahara",
-      question: "How regular are your meals?",
-      options: ["Regular and at fixed times", "Irregular/skipped frequently"],
+      title: t("ayush.sections.ahara"),
+      question: t("ayush.questions.q7.question"),
+      options: [
+        t("ayush.questions.q7.options.0"),
+        t("ayush.questions.q7.options.1"),
+      ],
     },
 
     {
       id: 8,
       letter: "Ah",
-      title: "Ahara",
-      question: "What best describes your usual food choices?",
+      title: t("ayush.sections.ahara"),
+      question: t("ayush.questions.q8.question"),
       options: [
-        "Mostly fresh, home-cooked food",
-        "Frequently spicy/oily food",
-        "Frequently sweet/heavy/processed food",
-        "Mixed",
+        t("ayush.questions.q8.options.0"),
+        t("ayush.questions.q8.options.1"),
+        t("ayush.questions.q8.options.2"),
+        t("ayush.questions.q8.options.3"),
       ],
     },
 
     {
       id: 9,
       letter: "V",
-      title: "Vihara",
-      question: "How would you describe your usual physical activity?",
-      options: ["Low/sedentary", "Moderate", "High/physically active"],
+      title: t("ayush.sections.vihara"),
+      question: t("ayush.questions.q9.question"),
+      options: [
+        t("ayush.questions.q9.options.0"),
+        t("ayush.questions.q9.options.1"),
+        t("ayush.questions.q9.options.2"),
+      ],
     },
 
     {
       id: 10,
       letter: "V",
-      title: "Vihara",
-      question: "How would you describe your daily routine and sleep schedule?",
+      title: t("ayush.sections.vihara"),
+      question: t("ayush.questions.q10.question"),
       options: [
-        "Regular and consistent",
-        "Irregular/disturbed",
-        "Frequently sleep during the day or oversleep",
+        t("ayush.questions.q10.options.0"),
+        t("ayush.questions.q10.options.1"),
+        t("ayush.questions.q10.options.2"),
       ],
     },
   ];
@@ -134,8 +140,11 @@ const Ayush = () => {
 
   const [storeValue, setStoreValue] = useState([]);
 
-  // Voice recognition state
-  const [selectedLanguage, setSelectedLanguage] = useState("hi-IN");
+  // Voice recognition language
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    language === "Hindi" ? "hi-IN" : "en-IN",
+  );
+
   const [isListening, setIsListening] = useState(false);
 
   const question = questions[currentQuestion];
@@ -146,11 +155,40 @@ const Ayush = () => {
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
+  useEffect(() => {
+    setSelectedLanguage(language === "Hindi" ? "hi-IN" : "en-IN");
+  }, [language]);
+
+  useEffect(() => {
+    const loadVoices = () => {
+      window.speechSynthesis.getVoices();
+    };
+
+    loadVoices();
+
+    window.speechSynthesis.addEventListener("voiceschanged", loadVoices);
+
+    return () => {
+      window.speechSynthesis.removeEventListener("voiceschanged", loadVoices);
+    };
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      window.speechSynthesis.cancel();
+    };
+  }, []);
+
   const handleVoiceInput = () => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
+      alert(
+        language === "Hindi"
+          ? "आपके ब्राउज़र में वॉइस इनपुट समर्थित नहीं है। कृपया Google Chrome का उपयोग करें।"
+          : "Voice input is not supported. Please use Google Chrome.",
+      );
       return;
     }
 
@@ -161,18 +199,21 @@ const Ayush = () => {
 
     const recognition = new SpeechRecognition();
 
-    // Selected language
-    recognition.lang = selectedLanguage;
+    recognition.lang = selectedLanguage === "hi-IN" ? "hi-IN" : "en-IN";
 
     recognition.continuous = false;
     recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
 
     recognition.onstart = () => {
+      console.log("Listening in:", recognition.lang);
       setIsListening(true);
     };
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
+
+      console.log("Voice input:", transcript);
 
       setAnswer((previousAnswer) => {
         if (previousAnswer.trim()) {
@@ -181,14 +222,29 @@ const Ayush = () => {
 
         return transcript;
       });
+
+      setIsListening(false);
     };
 
     recognition.onerror = (event) => {
-      console.log("Speech recognition error:", event.error);
+      console.error("Speech recognition error:", event.error);
+
       setIsListening(false);
 
       if (event.error === "not-allowed") {
-        console.log("Please allow microphone permission.");
+        alert(
+          language === "Hindi"
+            ? "माइक्रोफ़ोन की अनुमति दें।"
+            : "Please allow microphone permission.",
+        );
+      }
+
+      if (event.error === "no-speech") {
+        alert(
+          language === "Hindi"
+            ? "कोई आवाज़ नहीं मिली। कृपया दोबारा बोलें।"
+            : "No speech detected. Please try again.",
+        );
       }
     };
 
@@ -199,36 +255,86 @@ const Ayush = () => {
     recognition.start();
   };
 
-  const handleSpeakQuestion = () => {
-    window.speechSynthesis.cancel();
+const handleSpeakQuestion = () => {
+  window.speechSynthesis.cancel();
 
-    const voices = window.speechSynthesis.getVoices();
+  const voices = window.speechSynthesis.getVoices();
 
-    const femaleVoice = voices.find((voice) =>
-      /female|samantha|karen|moira|google.*female|microsoft.*zira/i.test(
-        voice.name,
-      ),
+  const isHindi = selectedLanguage === "hi-IN";
+
+  // Find voice specifically for selected language
+  const matchingVoices = voices.filter((voice) =>
+    voice.lang.toLowerCase().startsWith(isHindi ? "hi" : "en")
+  );
+
+  console.log("Selected language:", selectedLanguage);
+  console.log("Available voices:", voices);
+  console.log("Matching voices:", matchingVoices);
+
+  // If Hindi is selected but Hindi voice is not available
+  if (isHindi && matchingVoices.length === 0) {
+    alert(
+      "Hindi voice is not available in your browser. Please enable/install a Hindi voice in your system/browser."
     );
+    return;
+  }
 
-    const optionsText = question.options
-      .map(
-        (option, index) =>
-          `Option ${String.fromCharCode(65 + index)}. ${option}`,
-      )
-      .join(". ");
+  // If English is selected but English voice is not available
+  if (!isHindi && matchingVoices.length === 0) {
+    alert(
+      "English voice is not available in your browser."
+    );
+    return;
+  }
 
-    const fullText = `${question.question}. ${optionsText}`;
+  const selectedVoice = matchingVoices[0];
 
-    const speech = new SpeechSynthesisUtterance(fullText);
+  // Create language-specific option labels
+  const optionLabels = isHindi
+    ? ["ए", "बी", "सी", "डी"]
+    : ["A", "B", "C", "D"];
 
-    speech.voice = femaleVoice || voices[0];
-    speech.lang = selectedLanguage;
-    speech.rate = 0.9;
-    speech.pitch = 1;
-    speech.volume = 1;
+  const optionsText = question.options
+    .map(
+      (option, index) =>
+        isHindi
+          ? `विकल्प ${optionLabels[index]}. ${option}`
+          : `Option ${optionLabels[index]}. ${option}`
+    )
+    .join(". ");
 
-    window.speechSynthesis.speak(speech);
+  // Question + all options
+  const fullText = `${question.question}. ${optionsText}`;
+
+  console.log("Speaking:", fullText);
+  console.log("Speaking language:", selectedLanguage);
+  console.log("Speaking voice:", selectedVoice.name);
+  console.log("Speaking voice language:", selectedVoice.lang);
+
+  const speech = new SpeechSynthesisUtterance(fullText);
+
+  speech.voice = selectedVoice;
+  speech.lang = selectedLanguage;
+  speech.rate = isHindi ? 0.85 : 0.9;
+  speech.pitch = 1;
+  speech.volume = 1;
+
+  speech.onstart = () => {
+    console.log(
+      `Speaking in ${isHindi ? "Hindi" : "English"}`
+    );
   };
+
+  speech.onend = () => {
+    console.log("Speech completed");
+  };
+
+  speech.onerror = (event) => {
+    console.error("Speech synthesis error:", event);
+  };
+
+  window.speechSynthesis.speak(speech);
+};
 
   const handleOptionSelect = (option) => {
     setAnswer(option);
@@ -257,21 +363,22 @@ const Ayush = () => {
     setAnswer("");
   };
 
-  // useEffect(() => {
-  //   // console.log(storeValue);
-  //   // store data in local storage
-  // }, [storeValue]);
-
   const handlePrevious = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion((prev) => prev - 1);
+
       setAnswer("");
+
+      window.speechSynthesis.cancel();
     }
   };
 
   const handleSelectQuestion = (index) => {
     setCurrentQuestion(index);
+
     setAnswer("");
+
+    window.speechSynthesis.cancel();
   };
 
   return (
@@ -285,13 +392,15 @@ const Ayush = () => {
           </span>
 
           <h1 className="mt-3 text-3xl font-bold text-gray-800 md:text-4xl">
-            AYUSH Health Assessment
+            {t("ayush.title")}
           </h1>
         </div>
 
+        {/* AYUSH Categories */}
+
         <div className="mb-6 flex flex-col items-center justify-center gap-3">
           <div className="rounded-full border border-[#bde5e4] bg-[#e7f7f7] px-3 py-2 text-sm font-semibold text-[#005f73]">
-            🌳Prakriti • ⚖️Vikriti • 🔥Agni • 🌽Ahara • 🧘Vihara
+            {t("ayush.categories")}
           </div>
         </div>
 
@@ -300,7 +409,8 @@ const Ayush = () => {
         <div className="mb-6">
           <div className="mb-2 flex items-center justify-between text-sm">
             <span className="font-semibold text-gray-600">
-              Question {currentQuestion + 1} of {questions.length}
+              {t("ayush.question")} {currentQuestion + 1} {t("ayush.of")}{" "}
+              {questions.length}
             </span>
 
             <span className="font-semibold text-[#0a9396]">
@@ -311,15 +421,19 @@ const Ayush = () => {
           <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
             <div
               className="h-full rounded-full bg-[#0a9396] transition-all duration-500"
-              style={{ width: `${progress}%` }}
+              style={{
+                width: `${progress}%`,
+              }}
             ></div>
           </div>
         </div>
 
-        {/* Question Card  */}
+        {/* Question Card */}
 
         <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-7 shadow-xl md:p-10">
           <div className="relative">
+            {/* Question Category */}
+
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#0a9396] text-2xl font-bold text-white shadow-md">
                 {question.letter}
@@ -339,15 +453,13 @@ const Ayush = () => {
                 {question.question}
               </h2>
 
+              {/* Speak Question */}
+
               <button
                 type="button"
                 onClick={handleSpeakQuestion}
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e0f4f4] text-[#005f73] shadow-sm transition-all duration-300 hover:bg-[#0a9396] hover:text-white hover:scale-105"
-                title={
-                  selectedLanguage === "hi-IN"
-                    ? "प्रश्न और विकल्प सुनें"
-                    : "Listen to question and options"
-                }
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e0f4f4] text-[#005f73] shadow-sm transition-all duration-300 hover:scale-105 hover:bg-[#0a9396] hover:text-white"
+                title={t("ayush.listenQuestion")}
               >
                 <MdOutlineMicNone size={25} />
               </button>
@@ -366,6 +478,7 @@ const Ayush = () => {
                   }`}
                 >
                   {/* Select Option */}
+
                   <button
                     type="button"
                     onClick={() => handleOptionSelect(option)}
@@ -393,17 +506,15 @@ const Ayush = () => {
               ))}
             </div>
 
-            {/* Microphone */}
-
-            <div className="mt-8"></div>
-
-            {/* Microphone */}
+            {/* Voice Input */}
 
             <div className="mt-8">
               <div className="mb-4 flex items-center justify-between">
                 <label className="text-sm font-semibold text-gray-600">
-                  Select Language
+                  {t("ayush.selectLanguage")}
                 </label>
+
+                {/* Speech Language */}
 
                 <div className="flex rounded-xl border border-[#bde5e4] bg-[#e7f7f7] p-1">
                   <button
@@ -432,9 +543,13 @@ const Ayush = () => {
                 </div>
               </div>
 
+              {/* Answer Label */}
+
               <label className="mb-2 block text-sm font-semibold text-gray-600">
-                Your Answer
+                {t("ayush.yourAnswer")}
               </label>
+
+              {/* Answer Input */}
 
               <div
                 className={`flex items-center gap-3 rounded-2xl border-2 bg-gray-50 p-2 transition-all duration-300 ${
@@ -448,16 +563,12 @@ const Ayush = () => {
                   value={answer}
                   onChange={(e) => setAnswer(e.target.value)}
                   placeholder={
-                    isListening
-                      ? selectedLanguage === "hi-IN"
-                        ? "सुन रहा हूँ... अपना उत्तर बोलें"
-                        : "Listening... Speak your answer"
-                      : selectedLanguage === "hi-IN"
-                        ? "अपना उत्तर यहाँ लिखें..."
-                        : "Type your answer here..."
+                    isListening ? t("ayush.listening") : t("ayush.typeAnswer")
                   }
                   className="h-12 flex-1 bg-transparent px-4 text-gray-700 outline-none placeholder:text-gray-400"
                 />
+
+                {/* Microphone */}
 
                 <button
                   type="button"
@@ -469,10 +580,8 @@ const Ayush = () => {
                   }`}
                   title={
                     isListening
-                      ? "Stop listening"
-                      : selectedLanguage === "hi-IN"
-                        ? "अपना उत्तर बोलें"
-                        : "Speak your answer"
+                      ? t("ayush.stopListening")
+                      : t("ayush.speakAnswer")
                   }
                 >
                   {isListening ? (
@@ -483,6 +592,8 @@ const Ayush = () => {
                 </button>
               </div>
             </div>
+
+            {/* Navigation */}
 
             <div className="mt-10 flex items-center justify-between border-t border-gray-100 pt-6">
               {/* Previous */}
@@ -498,7 +609,8 @@ const Ayush = () => {
                 }`}
               >
                 <GrLinkPrevious />
-                Previous
+
+                {t("ayush.previous")}
               </button>
 
               {/* Next */}
@@ -513,7 +625,7 @@ const Ayush = () => {
                     : "cursor-not-allowed bg-[#0a9396]"
                 }`}
               >
-                {isLastQuestion ? "Complete" : "Next Question"}
+                {isLastQuestion ? t("ayush.complete") : t("ayush.nextQuestion")}
 
                 {!isLastQuestion && <GrLinkNext />}
               </button>
@@ -521,7 +633,7 @@ const Ayush = () => {
           </div>
         </div>
 
-        {/* Question*/}
+        {/* Question Navigation */}
 
         <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
           {questions.map((item, index) => (
@@ -540,10 +652,6 @@ const Ayush = () => {
               >
                 {item.letter}
               </button>
-
-              {item.title === "Chief Complaint" && (
-                <span className="text-xl font-bold text-[#005f73]">-</span>
-              )}
             </React.Fragment>
           ))}
         </div>

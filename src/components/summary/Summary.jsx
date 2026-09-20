@@ -1,40 +1,46 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FiEdit3, FiUploadCloud } from "react-icons/fi";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
-export const Summary = () => {
-    const navigate = useNavigate()
+const Summary = () => {
+  const navigate = useNavigate();
+  const { t } = useLanguage();
 
-    function nextPage(){
-        navigate("/concerns")
-    }
+  function nextPage() {
+    navigate("/concerns");
+  }
 
   return (
     <div className="min-h-screen w-full bg-[#f0fafa]">
+
       <div className="flex items-center justify-between border-b border-[#d6eeee] bg-white px-6 py-4 shadow-sm md:px-10">
+
         <div className="flex items-center gap-2">
+
           <span className="text-2xl font-bold text-[#005f73]">
             CareTech +
           </span>
+
         </div>
 
         <div className="hidden text-right sm:block">
+
           <p className="text-sm font-semibold text-[#005f73]">
-            Medical Summary
+            {t("summary.title")}
           </p>
+
         </div>
 
       </div>
 
-
-      {/* Main Image Area */}
       <main className="flex min-h-[calc(100vh-145px)] items-center justify-center px-3 py-5 md:px-6">
 
         <div className="w-full max-w-[150vh] overflow-hidden rounded-2xl border border-[#d7eeee] bg-white shadow-[0_15px_50px_rgba(0,95,115,0.12)]">
 
           <img
             src="/images/summary-fhir.png"
-            alt="CareTech FHIR Structure"
+            alt={t("summary.imageAlt")}
             className="block h-auto w-full object-contain"
           />
 
@@ -45,20 +51,30 @@ export const Summary = () => {
       <div className="sticky bottom-0 z-50 border-t border-[#d6eeee] bg-white/95 px-5 py-4 shadow-[0_-10px_30px_rgba(0,95,115,0.08)] backdrop-blur-md">
 
         <div className="mx-auto flex w-full max-w-[150vh] items-center justify-end gap-3">
+
+          {/* Edit */}
+
           <button
             type="button"
             className="flex items-center gap-2 rounded-xl border-2 border-[#005f73] bg-white px-6 py-3 text-sm font-semibold text-[#005f73] transition-all duration-300 hover:bg-[#eaf7f7] hover:shadow-md"
           >
+
             <FiEdit3 size={18} />
-            Edit
+
+            {t("summary.edit")}
+
           </button>
+
           <button
             onClick={nextPage}
             type="button"
             className="flex items-center gap-2 rounded-xl bg-[#005f73] px-7 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0a7288] hover:shadow-lg"
           >
+
             <FiUploadCloud size={18} />
-            Upload report
+
+            {t("summary.uploadReport")}
+
           </button>
 
         </div>
@@ -68,3 +84,5 @@ export const Summary = () => {
     </div>
   );
 };
+
+export default Summary;
